@@ -1,0 +1,47 @@
+        body { 
+            font-family: sans-serif; 
+            max-width: 900px; 
+            margin: 20px auto; 
+            padding: 0 15px;
+        }
+        .container { 
+            margin-bottom: 30px; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        }
+        form { 
+            display: grid; 
+            gap: 15px; 
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            align-items: end;
+        }
+        .full-width { 
+            grid-column: 1 / -1; 
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-top: 4px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 10px;
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 10px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #f4f4f4; 
+        }
