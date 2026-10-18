@@ -6,6 +6,7 @@ function buildTable (data) {
         const newRow = document.createElement("tr")
         newRow.classList.add("table__row")
         newRow.id = item.id
+        newRow.setAttribute('data-type', item.type)
 
         const idCell = document.createElement("td")
         idCell.classList.add("table__cell")
@@ -29,7 +30,8 @@ function buildTable (data) {
         
         const valueCell = document.createElement("td")
         valueCell.classList.add("table__cell")
-        valueCell.textContent = item.value
+        const value = parseFloat(item.value)
+        valueCell.textContent = value
 
         newRow.append(idCell, descriptionCell, typeCell, categoryCell, dueDateCell, valueCell)
         tableBody.append(newRow)
