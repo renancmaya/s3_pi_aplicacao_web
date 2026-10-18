@@ -13,7 +13,7 @@ const mockData = [
     type: "saida",
     category: "moradia",
     dueDate: "2026-10-10",
-    value: 1500.00
+    value: -1500.00
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const mockData = [
     type: "saida",
     category: "moradia",
     dueDate: "2026-10-12",
-    value: 185.50
+    value: -185.50
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const mockData = [
     type: "saida",
     category: "alimentação",
     dueDate: "2026-10-16",
-    value: 450.75
+    value: -450.75
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const mockData = [
     type: "saida",
     category: "ferramentas",
     dueDate: "2026-10-17",
-    value: 89.90
+    value: -89.90
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const mockData = [
     type: "saida",
     category: "transporte",
     dueDate: "2026-10-18",
-    value: 350.00
+    value: -350.00
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ const mockData = [
     type: "saida",
     category: "fixas",
     dueDate: "2026-10-20",
-    value: 120.00
+    value: -120.00
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ const mockData = [
     type: "saida",
     category: "lazer",
     dueDate: "2026-10-22",
-    value: 95.00
+    value: -95.00
   },
   {
     id: 11,
@@ -85,7 +85,7 @@ const mockData = [
     type: "saida",
     category: "saúde",
     dueDate: "2026-10-25",
-    value: 480.00
+    value: -480.00
   },
   {
     id: 12,
@@ -101,7 +101,7 @@ const mockData = [
     type: "saida",
     category: "transporte",
     dueDate: "2026-10-29",
-    value: 210.00
+    value: -210.00
   },
   {
     id: 14,
@@ -109,7 +109,7 @@ const mockData = [
     type: "saida",
     category: "saúde",
     dueDate: "2026-11-02",
-    value: 85.40
+    value: -85.40
   },
   {
     id: 15,
@@ -125,7 +125,7 @@ const mockData = [
     type: "saida",
     category: "moradia",
     dueDate: "2026-11-08",
-    value: 95.30
+    value: -95.30
   },
   {
     id: 17,
@@ -133,7 +133,7 @@ const mockData = [
     type: "saida",
     category: "moradia",
     dueDate: "2026-11-10",
-    value: 1500.00
+    value: -1500.00
   },
   {
     id: 18,
@@ -141,7 +141,7 @@ const mockData = [
     type: "saida",
     category: "lazer",
     dueDate: "2026-11-12",
-    value: 140.00
+    value: -140.00
   },
   {
     id: 19,
@@ -157,6 +157,6 @@ const mockData = [
     type: "saida",
     category: "alimentação",
     dueDate: "2026-11-16",
-    value: 520.10
+    value: -520.10
   }
 ];

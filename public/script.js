@@ -6,9 +6,10 @@ function getItems (key) {
     return JSON.parse(localStorage.getItem(key))
 }
 
-function buildTable (data) {
+function drawTable (data) {
 
     const tableBody = document.getElementById("table-body")
+    tableBody.innerHTML = ""
     
     for (const item of data) {
         const newRow = document.createElement("tr")
@@ -47,9 +48,35 @@ function buildTable (data) {
         
 }
 
-startLocalStorage(mockData)
+function configureForm () {
+    const form = document.getElementById("form")
+    form.addEventListener("submit", addItem)
+}
 
-buildTable(getItems("financialRecords"))
+function addItem (event) {
+    event.preventDefault()
+    const items = getItems("financialRecords")
+
+    const id = items.length > 0 ? items[items.length - 1].id + 1 : 1
+
+    const item = {
+        id: id,
+        description: document.getElementById("description").value,
+        type: document.getElementById("type").value,
+        category: document.getElementById("category").value,
+        dueDate: document.getElementById("due-date").value,
+        value: document.getElementById("value").value,
+    }
+
+    items.push(item)
+    localStorage.setItem("financialRecords", JSON.stringify(items))
+    drawTable(getItems("financialRecords"))
+
+}
+
+startLocalStorage(mockData)
+drawTable(getItems("financialRecords"))
+configureForm()
 
 /* 
   {
