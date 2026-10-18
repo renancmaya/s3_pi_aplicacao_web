@@ -39,10 +39,21 @@ function drawTable (data) {
         
         const valueCell = document.createElement("td")
         valueCell.classList.add("table__cell")
-        const value = parseFloat(item.value)
-        valueCell.textContent = value
+        valueCell.textContent = parseFloat(item.value)
 
-        newRow.append(idCell, descriptionCell, typeCell, categoryCell, dueDateCell, valueCell)
+        const actionsCell = document.createElement("td")
+        valueCell.classList.add("table__actions")
+
+        const deleteBtn = document.createElement("button")
+        deleteBtn.classList.add("table__delete")
+        deleteBtn.innerHTML= "Deletar"
+
+        const editBtn = document.createElement("button")
+        editBtn.classList.add("table__edit")
+        editBtn.innerHTML = "Editar"
+        
+        actionsCell.append(deleteBtn, editBtn)
+        newRow.append(idCell, descriptionCell, typeCell, categoryCell, dueDateCell, valueCell, actionsCell)
         tableBody.append(newRow)
     }
         
