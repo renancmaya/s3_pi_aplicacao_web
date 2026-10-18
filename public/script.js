@@ -1,3 +1,11 @@
+function startLocalStorage (data) {
+    localStorage.setItem("financialRecords", JSON.stringify(data))
+}
+
+function getItems (key) {
+    return JSON.parse(localStorage.getItem(key))
+}
+
 function buildTable (data) {
 
     const tableBody = document.getElementById("table-body")
@@ -39,7 +47,9 @@ function buildTable (data) {
         
 }
 
-buildTable(mockData)
+startLocalStorage(mockData)
+
+buildTable(getItems("financialRecords"))
 
 /* 
   {
