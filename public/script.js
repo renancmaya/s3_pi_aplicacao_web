@@ -1,15 +1,25 @@
 function startLocalStorage (data) {
-    localStorage.setItem("financialRecords", JSON.stringify(data))
+    
+    if (!localStorage.getItem("financialRecords")) {
+
+        localStorage.setItem("financialRecords", JSON.stringify(data))
+
+    }
 }
 
 function getItems (key) {
     return JSON.parse(localStorage.getItem(key))
 }
 
+function manageTableClicks (event) {
+    
+}
+
 function drawTable (data) {
 
     const tableBody = document.getElementById("table-body")
     tableBody.innerHTML = ""
+    tableBody.addEventListener("click", manageTableClicks)
     
     for (const item of data) {
         const newRow = document.createElement("tr")
