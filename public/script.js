@@ -7,12 +7,9 @@ function startLocalStorage (data) {
     }
 }
 
-function getItems (key) {
-    return JSON.parse(localStorage.getItem(key))
-}
-
-function manageTableClicks (event) {
-    
+function configureForm () {
+    const form = document.getElementById("form")
+    form.addEventListener("submit", addItem)
 }
 
 function drawTable (data) {
@@ -56,10 +53,12 @@ function drawTable (data) {
 
         const deleteBtn = document.createElement("button")
         deleteBtn.classList.add("table__delete")
+        deleteBtn.dataset.id = item.id
         deleteBtn.innerHTML= "Deletar"
 
         const editBtn = document.createElement("button")
         editBtn.classList.add("table__edit")
+        editBtn.dataset.id = item.id
         editBtn.innerHTML = "Editar"
         
         actionsCell.append(deleteBtn, editBtn)
@@ -69,9 +68,19 @@ function drawTable (data) {
         
 }
 
-function configureForm () {
-    const form = document.getElementById("form")
-    form.addEventListener("submit", addItem)
+function manageTableClicks (event) {
+
+    if (event.target.classList.contains("table__delete")) {
+        const id = event.target.dataset.id
+        deleteItem(id)
+    } else if (event.target.classList.contains("table__edit")) {
+        const id = event.target.dataset.id
+        editItem(id)
+    }
+}
+
+function getItems (key) {
+    return JSON.parse(localStorage.getItem(key))
 }
 
 function addItem (event) {
