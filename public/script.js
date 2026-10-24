@@ -68,21 +68,6 @@ function drawTable (data) {
         
 }
 
-function manageTableClicks (event) {
-
-    if (event.target.classList.contains("table__delete")) {
-        const id = event.target.dataset.id
-        deleteItem(id)
-    } else if (event.target.classList.contains("table__edit")) {
-        const id = event.target.dataset.id
-        editItem(id)
-    }
-}
-
-function getItems (key) {
-    return JSON.parse(localStorage.getItem(key))
-}
-
 function addItem (event) {
     event.preventDefault()
     const items = getItems("financialRecords")
@@ -101,6 +86,33 @@ function addItem (event) {
     items.push(item)
     localStorage.setItem("financialRecords", JSON.stringify(items))
     drawTable(getItems("financialRecords"))
+
+}
+
+function getItems (key) {
+    return JSON.parse(localStorage.getItem(key))
+}
+
+function manageTableClicks (event) {
+
+    if (event.target.classList.contains("table__delete")) {
+        const id = event.target.dataset.id
+        deleteItem(id)
+    } else if (event.target.classList.contains("table__edit")) {
+        const id = event.target.dataset.id
+        editItem(id)
+    }
+}
+
+function deleteItem (id) {
+    const items = getItems("financialRecords") // pega o array
+    const deletedItem = items.filter(item => item.id == id)
+    const updatedItems = items.filter(item => item.id != id) // constroi novo array
+    localStorage.setItem("financialRecords", JSON.stringify(updatedItems))
+    drawTable(getItems("financialRecords"))
+}
+
+function editItem (id) {
 
 }
 
