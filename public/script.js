@@ -105,15 +105,32 @@ function manageTableClicks (event) {
 }
 
 function deleteItem (id) {
+
     const items = getItems("financialRecords") // pega o array
     const deletedItem = items.filter(item => item.id == id)
     const updatedItems = items.filter(item => item.id != id) // constroi novo array
     localStorage.setItem("financialRecords", JSON.stringify(updatedItems))
     drawTable(getItems("financialRecords"))
+
 }
 
 function editItem (id) {
 
+    const items = getItems("financialRecords")
+    const index = items.findIndex(item => item.id == id)
+
+    const form = document.getElementById("form")
+    const descriptionField = document.getElementById("description")
+    const typeField = document.getElementById("type")
+    const categoryField = document.getElementById("category")
+    const dueDateField = document.getElementById("due-date")
+    const valueField = document.getElementById("value")
+
+    descriptionField.value = items[index].description
+    typeField.value = items[index].type
+    categoryField.value = items[index].category
+    dueDateField.value = items[index].dueDate
+    valueField.value = items[index].value
 }
 
 startLocalStorage(mockData)
