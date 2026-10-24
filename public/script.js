@@ -10,7 +10,14 @@ function startLocalStorage (data) {
 function configureForm () {
 
     const form = document.getElementById("form")
-    form.addEventListener("submit", addItem)
+    const idField = document.getElementById("id")
+
+    if (idField.value = "") {
+        form.addEventListener("submit", addItem)
+    } else {
+        form.addEventListener("submit", editItem)
+    }
+
 
     const clearBtn = document.getElementById("clear")
     clearBtn.addEventListener("click", clearForm)
@@ -91,6 +98,7 @@ function addItem (event) {
     items.push(item)
     localStorage.setItem("financialRecords", JSON.stringify(items))
     drawTable(getItems("financialRecords"))
+    clearForm()
 
 }
 
@@ -142,10 +150,9 @@ function editItem (id) {
     valueField.value = items[index].value
     submit.innerHTML = "Atualizar registro"
     clearBtn.classList.add("show")
-    // É preciso criar algo que remova o estado de edição para caso o usuário desista da mesma
 }
 
-function clearForm(event) {
+function clearForm() {
 
     const form = document.getElementById("form")
     const clearBtn = document.getElementById("clear")
