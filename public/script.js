@@ -15,7 +15,7 @@ function configureForm () {
     if (idField.value = "") {
         form.addEventListener("submit", addItem)
     } else {
-        form.addEventListener("submit", editItem)
+        form.addEventListener("submit", updateItem)
     }
 
 
@@ -113,7 +113,7 @@ function manageTableClicks (event) {
         deleteItem(id)
     } else if (event.target.classList.contains("table__edit")) {
         const id = event.target.dataset.id
-        editItem(id)
+        loadItemForEdit(id)
     }
 }
 
@@ -127,7 +127,7 @@ function deleteItem (id) {
 
 }
 
-function editItem (id) {
+function loadItemForEdit (id) {
 
     const items = getItems("financialRecords")
     const index = items.findIndex(item => item.id == id)
