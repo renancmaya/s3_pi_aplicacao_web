@@ -8,8 +8,13 @@ function startLocalStorage (data) {
 }
 
 function configureForm () {
+
     const form = document.getElementById("form")
     form.addEventListener("submit", addItem)
+
+    const clearBtn = document.getElementById("clear")
+    clearBtn.addEventListener("click", clearForm)
+    
 }
 
 function drawTable (data) {
@@ -120,17 +125,36 @@ function editItem (id) {
     const index = items.findIndex(item => item.id == id)
 
     const form = document.getElementById("form")
+    const idField = document.getElementById("id")
     const descriptionField = document.getElementById("description")
     const typeField = document.getElementById("type")
     const categoryField = document.getElementById("category")
     const dueDateField = document.getElementById("due-date")
     const valueField = document.getElementById("value")
+    const submit = document.getElementById("submit")
+    const clearBtn = document.getElementById("clear")
 
+    idField.value = items[index].id
     descriptionField.value = items[index].description
     typeField.value = items[index].type
     categoryField.value = items[index].category
     dueDateField.value = items[index].dueDate
     valueField.value = items[index].value
+    submit.innerHTML = "Atualizar"
+    clearBtn.classList.add("show")
+    // É preciso criar algo que remova o estado de edição para caso o usuário desista da mesma
+}
+
+function clearForm(event) {
+
+    const form = document.getElementById("form")
+    const clearBtn = document.getElementById("clear")
+    const idField = document.getElementById("id")
+    
+    form.reset()
+    clearBtn.classList.remove("show")
+    idField.removeAttribute("value")
+
 }
 
 startLocalStorage(mockData)
