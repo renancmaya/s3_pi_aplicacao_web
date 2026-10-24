@@ -140,7 +140,7 @@ function editItem (id) {
     categoryField.value = items[index].category
     dueDateField.value = items[index].dueDate
     valueField.value = items[index].value
-    submit.innerHTML = "Atualizar"
+    submit.innerHTML = "Atualizar registro"
     clearBtn.classList.add("show")
     // É preciso criar algo que remova o estado de edição para caso o usuário desista da mesma
 }
@@ -150,10 +150,12 @@ function clearForm(event) {
     const form = document.getElementById("form")
     const clearBtn = document.getElementById("clear")
     const idField = document.getElementById("id")
+    const submit = document.getElementById("submit")
     
     form.reset()
     clearBtn.classList.remove("show")
     idField.removeAttribute("value")
+    submit.innerHTML = "Adicionar registro"
 
 }
 
