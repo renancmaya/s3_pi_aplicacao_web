@@ -90,8 +90,13 @@ function drawTable (data) {
         editBtn.classList.add("table__edit")
         editBtn.dataset.id = item.id
         editBtn.innerHTML = "Editar"
+
+        const duplicateBtn = document.createElement("button")
+        duplicateBtn.classList.add("table__duplicate")
+        duplicateBtn.dataset.id = item.id
+        duplicateBtn.innerHTML = "Duplicar"
         
-        actionsCell.append(deleteBtn, editBtn)
+        actionsCell.append(deleteBtn, editBtn, duplicateBtn)
         newRow.append(idCell, descriptionCell, typeCell, categoryCell, dueDateCell, valueCell, actionsCell)
         tableBody.append(newRow)
     }
@@ -168,6 +173,9 @@ function manageTableClicks (event) {
     } else if (event.target.classList.contains("table__edit")) {
         const id = event.target.dataset.id
         loadItemForEdit(id)
+    } else if (event.target.classList.contains("table__duplicate")) {
+        const id = event.target.dataset.id
+        duplicateItem(id)
     }
 }
 
@@ -207,6 +215,29 @@ function loadItemForEdit (id) {
     configureForm(
 
     )
+}
+
+function duplicateItem (id) {
+
+    console.log("Duplicação iniciada")
+
+    const items = getItems("financialRecords")
+    const index = items.findIndex(item => item.id == id)
+    /*const id = items[items.length - 1].id + 1*/
+
+    const copy = {
+        id: items[items.length - 1].id + 1,
+        description: items[index].description,
+        type: items[index].type,
+        category: items[index].category,
+        dueDate: items[index].dueDate,
+        value: items[index].value
+    }
+
+    items.push(copy)
+    localStorage.setItem("financialRecords", JSON.stringify(items))
+    drawTable(getItems("financialRecords"))
+
 }
 
 startLocalStorage(mockData)
