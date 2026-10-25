@@ -9,15 +9,21 @@ function startLocalStorage (data) {
 
 function configureForm () {
 
+    // Arrumar o funcionamento
+    // Quando a função é carregada?
+        // Ao iniciar o app
+    // Talvez mesclar essa função com clear form?
+
     const form = document.getElementById("form")
     const idField = document.getElementById("id")
 
-    if (idField.value = "") {
+    if (idField.value == "") {
+        console.log("Entrou no IF")
         form.addEventListener("submit", addItem)
     } else {
+        console.log("Entrou no ELSE")
         form.addEventListener("submit", updateItem)
     }
-
 
     const clearBtn = document.getElementById("clear")
     clearBtn.addEventListener("click", clearForm)
@@ -81,6 +87,9 @@ function drawTable (data) {
 }
 
 function addItem (event) {
+
+    console.log("Tentou adicionar")
+
     event.preventDefault()
     const items = getItems("financialRecords")
 
@@ -99,6 +108,39 @@ function addItem (event) {
     localStorage.setItem("financialRecords", JSON.stringify(items))
     drawTable(getItems("financialRecords"))
     clearForm()
+
+}
+
+function updateItem (event) {
+
+    console.log("Tentou atualizar")
+
+    event.preventDefault()
+    const items = getItems("financialRecords")
+
+    const item = {
+        id: document.getElementById("id").value,
+        description: document.getElementById("description").value,
+        type: document.getElementById("type").value,
+        category: document.getElementById("category").value,
+        dueDate: document.getElementById("due-date").value,
+        value: document.getElementById("value").value,
+    }
+
+    const newItems = items.map(mapItem => {
+
+        if (mapItem.id == item.id) {
+            return item
+        }
+
+        return mapItem
+    })
+    
+    localStorage.setItem("financialRecords", JSON.stringify(newItems))
+    drawTable(getItems("financialRecords"))
+    clearForm()
+
+    // por que map é mais complexto que filter?
 
 }
 
