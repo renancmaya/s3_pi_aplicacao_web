@@ -44,16 +44,9 @@ input, select, button {
     margin-top: 4px;
 }
 
-button {
-    cursor: pointer;
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    font-weight: bold;
-}
-
 table { 
     width: 100%; 
+    table-layout: auto;
     border-collapse: collapse; 
     margin-top: 10px;
 }
@@ -66,4 +59,41 @@ th, td {
 
 th { 
     background-color: #f4f4f4; 
+}
+
+.table__head {
+    
+}
+
+.table__row {
+
+}
+
+.table__header {
+    white-space: nowrap;
+}
+
+.table__sort-icon {
+    max-width: 20px;
+    min-width: 20px;
+}
+
+.table__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.table__action {
+    cursor: pointer;
+    min-width: 16px;
+    margin: 0;
+    padding: 0;
+    color: hsl(0 0 30);
+    border: none;
+    background-color: transparent;
+}
+
+.table__action * {
+    pointer-events: none;
 }
