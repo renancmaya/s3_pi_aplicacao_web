@@ -9,25 +9,37 @@ function startLocalStorage (data) {
 
 function configureForm () {
 
-    // Arrumar o funcionamento
-    // Quando a função é carregada?
-        // Ao iniciar o app
-    // Talvez mesclar essa função com clear form?
-
     const form = document.getElementById("form")
     const idField = document.getElementById("id")
 
     if (idField.value == "") {
-        console.log("Entrou no IF")
+        console.log("Entrou no modo ADD")
+        form.removeEventListener("submit", updateItem)
         form.addEventListener("submit", addItem)
     } else {
-        console.log("Entrou no ELSE")
+        console.log("Entrou no modo EDIT")
+        form.removeEventListener("submit", addItem)
         form.addEventListener("submit", updateItem)
     }
 
     const clearBtn = document.getElementById("clear")
     clearBtn.addEventListener("click", clearForm)
     
+}
+
+function clearForm() {
+
+    const form = document.getElementById("form")
+    const clearBtn = document.getElementById("clear")
+    const idField = document.getElementById("id")
+    const submit = document.getElementById("submit")
+    
+    form.reset()
+    clearBtn.classList.remove("show")
+    idField.removeAttribute("value")
+    submit.innerHTML = "Adicionar registro"
+    configureForm()
+
 }
 
 function drawTable (data) {
@@ -88,7 +100,7 @@ function drawTable (data) {
 
 function addItem (event) {
 
-    console.log("Tentou adicionar")
+    console.log("Adicionou")
 
     event.preventDefault()
     const items = getItems("financialRecords")
@@ -108,12 +120,13 @@ function addItem (event) {
     localStorage.setItem("financialRecords", JSON.stringify(items))
     drawTable(getItems("financialRecords"))
     clearForm()
+    configureForm()
 
 }
 
 function updateItem (event) {
 
-    console.log("Tentou atualizar")
+    console.log("Atualizou")
 
     event.preventDefault()
     const items = getItems("financialRecords")
@@ -139,8 +152,7 @@ function updateItem (event) {
     localStorage.setItem("financialRecords", JSON.stringify(newItems))
     drawTable(getItems("financialRecords"))
     clearForm()
-
-    // por que map é mais complexto que filter?
+    configureForm()
 
 }
 
@@ -161,9 +173,9 @@ function manageTableClicks (event) {
 
 function deleteItem (id) {
 
-    const items = getItems("financialRecords") // pega o array
+    const items = getItems("financialRecords")
     const deletedItem = items.filter(item => item.id == id)
-    const updatedItems = items.filter(item => item.id != id) // constroi novo array
+    const updatedItems = items.filter(item => item.id != id)
     localStorage.setItem("financialRecords", JSON.stringify(updatedItems))
     drawTable(getItems("financialRecords"))
 
@@ -192,20 +204,9 @@ function loadItemForEdit (id) {
     valueField.value = items[index].value
     submit.innerHTML = "Atualizar registro"
     clearBtn.classList.add("show")
-}
+    configureForm(
 
-function clearForm() {
-
-    const form = document.getElementById("form")
-    const clearBtn = document.getElementById("clear")
-    const idField = document.getElementById("id")
-    const submit = document.getElementById("submit")
-    
-    form.reset()
-    clearBtn.classList.remove("show")
-    idField.removeAttribute("value")
-    submit.innerHTML = "Adicionar registro"
-
+    )
 }
 
 startLocalStorage(mockData)
