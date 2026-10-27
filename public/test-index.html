@@ -39,10 +39,43 @@
                 <input type="number" id="value" step="0.01" min="0.01" required>
             </div>
             <div class="full-width">
-                <button type="submit" id="submit">Adicionar registro</button>
+                <button type="submit" id="submit" class="button">Adicionar registro</button>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="clear" class="form__clear"><path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg>
         </form>
+    </div>
+
+    <!-- barra de filtros -->
+    <div class="container filters">
+        <div>
+            <label for="filter-description">Buscar descrição</label>
+            <input type="text" id="filter-description" placeholder="">
+        </div>
+        <div>
+            <label for="filter-type">Tipo</label>
+            <select id="filter-type">
+                <option value="">Todos</option>
+                <option value="entrada">Entrada</option>
+                <option value="saida">Saída</option>
+            </select>
+        </div>
+        <div>
+            <label for="filter-category">Categoria</label>
+            <input type="text" id="filter-category" placeholder="">
+        </div>
+        <div>
+            <label for="filter-due-date">Data</label>
+            <input type="text" id="filter-due-date" placeholder="">
+        </div>
+        <div>
+            <label for="filter-value-min">Valor mínimo</label>
+            <input type="text" id="filter-value-min" placeholder="">
+            <label for="filter-value-max">Valor Máximo</label>
+            <input type="text" id="filter-value-max" placeholder="">
+        </div>
+        <div class="filters__actions">
+            <button type="button" id="apply-filters" class="button">Aplicar</button>
+        </div>
     </div>
 
     <div class="container">
