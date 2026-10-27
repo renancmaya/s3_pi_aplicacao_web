@@ -5,15 +5,29 @@
 class Ledger {
 
     key;
+    data = [];
 
-    constructor (key) {
+    constructor () {
         this.key = "financialRecords";
+    }
+
+    startLocalStorage (data) {
+    
+        if (!localStorage.getItem(this.key)) {
+
+            localStorage.setItem(this.key, JSON.stringify(data))
+
+        }
+    }
+    
+    getItems (key) {
+        return JSON.parse(localStorage.getItem(key))
     }
 
     addItem (event) {
 
         event.preventDefault()
-        const items = getItems("financialRecords")
+        const items = getItems(this.key)
 
         const id = items.length > 0 ? items[items.length - 1].id + 1 : 1
 
@@ -64,24 +78,6 @@ class Ledger {
 
     }
 
-    getItems (key) {
-        return JSON.parse(localStorage.getItem(key))
-    }
-
-    function manageTableClicks (event) {
-
-        if (event.target.classList.contains("table__action--delete")) {
-            const id = event.target.dataset.id
-            console.log("Ativou delete")
-            deleteItem(id)
-        } else if (event.target.classList.contains("table__action--edit")) {
-            const id = event.target.dataset.id
-            loadItemForEdit(id)
-        } else if (event.target.classList.contains("table__action--duplicate")) {
-            const id = event.target.dataset.id
-            duplicateItem(id)
-        }
-    }
 
     deleteItem (id) {
 
@@ -89,6 +85,26 @@ class Ledger {
         const deletedItem = items.filter(item => item.id == id)
         const updatedItems = items.filter(item => item.id != id)
         localStorage.setItem("financialRecords", JSON.stringify(updatedItems))
+        drawTable(getItems("financialRecords"))
+
+    }
+
+    duplicateItem (id) {
+
+        const items = getItems("financialRecords")
+        const index = items.findIndex(item => item.id == id)
+
+        const copy = {
+            id: items[items.length - 1].id + 1,
+            description: items[index].description,
+            type: items[index].type,
+            category: items[index].category,
+            dueDate: items[index].dueDate,
+            value: items[index].value
+        }
+
+        items.push(copy)
+        localStorage.setItem("financialRecords", JSON.stringify(items))
         drawTable(getItems("financialRecords"))
 
     }
