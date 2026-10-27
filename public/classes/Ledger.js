@@ -12,7 +12,7 @@ class Ledger {
     }
 
     startLocalStorage (data) {
-    
+
         if (!localStorage.getItem(this.key)) {
 
             localStorage.setItem(this.key, JSON.stringify(data))
@@ -20,14 +20,14 @@ class Ledger {
         }
     }
     
-    getItems (key) {
+    getAll (key) {
         return JSON.parse(localStorage.getItem(key))
     }
 
-    addItem (event) {
+    add (event) {
 
         event.preventDefault()
-        const items = getItems(this.key)
+        const items = getAll(this.key)
 
         const id = items.length > 0 ? items[items.length - 1].id + 1 : 1
 
@@ -41,17 +41,17 @@ class Ledger {
         }
 
         items.push(item)
-        localStorage.setItem("financialRecords", JSON.stringify(items))
-        drawTable(getItems("financialRecords"))
-        clearForm()
-        configureForm()
+        localStorage.setItem(this.key, JSON.stringify(items))
+        //drawTable(getAll(this.key))
+        //clearForm()
+        //configureForm()
 
     }
 
-    updateItem (event) {
+    update (event) {
 
         event.preventDefault()
-        const items = getItems("financialRecords")
+        const items = getAll(this.key)
 
         const item = {
             id: document.getElementById("id").value,
@@ -71,27 +71,27 @@ class Ledger {
             return mapItem
         })
         
-        localStorage.setItem("financialRecords", JSON.stringify(newItems))
-        drawTable(getItems("financialRecords"))
-        clearForm()
-        configureForm()
+        localStorage.setItem(this.key, JSON.stringify(newItems))
+        //drawTable(getAll(this.key))
+        //clearForm()
+        //configureForm()
 
     }
 
 
-    deleteItem (id) {
+    delete (id) {
 
-        const items = getItems("financialRecords")
+        const items = getAll(this.key)
         const deletedItem = items.filter(item => item.id == id)
         const updatedItems = items.filter(item => item.id != id)
-        localStorage.setItem("financialRecords", JSON.stringify(updatedItems))
-        drawTable(getItems("financialRecords"))
+        localStorage.setItem(this.key, JSON.stringify(updatedItems))
+        //drawTable(getAll(this.key))
 
     }
 
-    duplicateItem (id) {
+    duplicate (id) {
 
-        const items = getItems("financialRecords")
+        const items = getAll(this.key)
         const index = items.findIndex(item => item.id == id)
 
         const copy = {
@@ -104,8 +104,8 @@ class Ledger {
         }
 
         items.push(copy)
-        localStorage.setItem("financialRecords", JSON.stringify(items))
-        drawTable(getItems("financialRecords"))
+        localStorage.setItem(this.key, JSON.stringify(items))
+        //drawTable(getAll(this.key))
 
     }
 

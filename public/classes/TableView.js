@@ -1,30 +1,34 @@
 class TableView {
 
     constructor () {
-
+        this.onDelete = null;
+        this.onEdit = null;
+        this.onDuplicate = null;
     }
 
     manageTableClicks (event) {
 
         if (event.target.classList.contains("table__action--delete")) {
-
             const id = event.target.dataset.id
-            deleteItem(id)
+            if (this.onDelete) {
+                this.onDelete(id)
+            }
 
         } else if (event.target.classList.contains("table__action--edit")) {
-
             const id = event.target.dataset.id
-            loadItemForEdit(id)
+            if (this.onEdit) {
+                this.onEdit(id)
+            }
 
         } else if (event.target.classList.contains("table__action--duplicate")) {
-
             const id = event.target.dataset.id
-            duplicateItem(id)
-
+            if (this.onDuplicate) {
+                this.onDuplicate(id)
+            }
         }
     }
 
-    drawTable (data) {
+    render (data) {
 
         tableBody.innerHTML = ""
     
@@ -80,7 +84,7 @@ class TableView {
             actionsCell.append(editBtn, duplicateBtn, deleteBtn)
             newRow.append(idCell, descriptionCell, typeCell, categoryCell, dueDateCell, valueCell, actionsCell)
             tableBody.append(newRow)
-            
+
         }
 
     }

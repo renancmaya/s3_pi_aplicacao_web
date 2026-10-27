@@ -4,7 +4,7 @@ class FormView {
 
     }
 
-    configureForm () {
+    bindEvents () {
 
         const form = document.getElementById("form")
         const idField = document.getElementById("id")
@@ -22,11 +22,11 @@ class FormView {
         }
 
         const clearBtn = document.getElementById("clear")
-        clearBtn.addEventListener("click", clearForm)
+        clearBtn.addEventListener("click", reset)
         
     }
 
-    clearForm() {
+    reset() {
 
         const form = document.getElementById("form")
         const clearBtn = document.getElementById("clear")
@@ -37,7 +37,7 @@ class FormView {
         clearBtn.classList.remove("show")
         idField.removeAttribute("value")
         submit.innerHTML = "Adicionar registro"
-        configureForm()
+        bindEvents()
 
     }
 
