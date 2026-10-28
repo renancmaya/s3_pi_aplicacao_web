@@ -4,20 +4,9 @@
 
 class Ledger {
 
-    key;
-    data = [];
-
     constructor () {
         this.key = "financialRecords";
-    }
-
-    startLocalStorage (data) {
-
-        if (!localStorage.getItem(this.key)) {
-
-            localStorage.setItem(this.key, JSON.stringify(data))
-
-        }
+        this.items = !localStorage.getItem(this.key) ? getAll(this.key) : localStorage.setItem(this.key, JSON.stringify([]))
     }
     
     getAll (key) {
@@ -80,13 +69,8 @@ class Ledger {
 
 
     delete (id) {
-
-        const items = getAll(this.key)
-        const deletedItem = items.filter(item => item.id == id)
-        const updatedItems = items.filter(item => item.id != id)
-        localStorage.setItem(this.key, JSON.stringify(updatedItems))
-        //drawTable(getAll(this.key))
-
+        this.items = this.items.filter(item => item.id != id)
+        localStorage.setItem(this.key, JSON.stringify(this.items)
     }
 
     duplicate (id) {
