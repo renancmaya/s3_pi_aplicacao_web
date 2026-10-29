@@ -1,29 +1,25 @@
 class FormView {
 
     constructor () {
-
+        this.onAdd = null
+        this.onUpdate = null
     }
 
+    // Continuar daqui
     bindEvents () {
-
         const form = document.getElementById("form")
         const idField = document.getElementById("id")
 
         if (idField.value == "") {
-
-            form.removeEventListener("submit", updateItem)
-            form.addEventListener("submit", addItem)
-
+            form.removeEventListener("submit", onUpdate)
+            form.addEventListener("submit", onAdd)
         } else {
-
-            form.removeEventListener("submit", addItem)
-            form.addEventListener("submit", updateItem)
-            
+            form.removeEventListener("submit", onAdd)
+            form.addEventListener("submit", onUpdate)          
         }
 
         const clearBtn = document.getElementById("clear")
-        clearBtn.addEventListener("click", reset)
-        
+        clearBtn.addEventListener("click", reset)  
     }
 
     reset() {

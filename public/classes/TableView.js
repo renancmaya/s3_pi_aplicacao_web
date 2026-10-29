@@ -17,7 +17,7 @@ class TableView {
         } else if (event.target.classList.contains("table__action--edit")) {
             const id = event.target.dataset.id
             if (this.onEdit) {
-                this.onEdit(id)
+                this.onUpdate(id)
             }
 
         } else if (event.target.classList.contains("table__action--duplicate")) {

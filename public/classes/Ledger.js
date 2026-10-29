@@ -38,7 +38,6 @@ class Ledger {
     }
 
     update (event) {
-
         event.preventDefault()
         const items = getAll(this.key)
 
@@ -60,7 +59,7 @@ class Ledger {
             return mapItem
         })
         
-        localStorage.setItem(this.key, JSON.stringify(newItems))
+        localStorage.setItem(this.key, JSON.stringify(newItems));
         //drawTable(getAll(this.key))
         //clearForm()
         //configureForm()
@@ -69,28 +68,21 @@ class Ledger {
 
 
     delete (id) {
-        this.items = this.items.filter(item => item.id != id)
-        localStorage.setItem(this.key, JSON.stringify(this.items)
+        this.items = this.items.filter(item => item.id != id);
+        localStorage.setItem(this.key, JSON.stringify(this.items));
     }
 
     duplicate (id) {
+        const index = this.items.findIndex(item => item.id == id);
+        const referenceItem = this.items[index];
+        const newId = this.items[this.items.length - 1].id + 1
+        const newItem = new Item({
+            ...referenceItem,
+            id: newId
+        })
 
-        const items = getAll(this.key)
-        const index = items.findIndex(item => item.id == id)
-
-        const copy = {
-            id: items[items.length - 1].id + 1,
-            description: items[index].description,
-            type: items[index].type,
-            category: items[index].category,
-            dueDate: items[index].dueDate,
-            value: items[index].value
-        }
-
-        items.push(copy)
-        localStorage.setItem(this.key, JSON.stringify(items))
-        //drawTable(getAll(this.key))
-
+        this.items.push(newItem)
+        localStorage.setItem(this.key, JSON.stringify(this.items))
     }
 
 
