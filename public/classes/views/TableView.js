@@ -1,8 +1,11 @@
-class TableView {
+export default class TableView {
 
     constructor () {
+        this.tableBody = document.getElementById("table-body");
+
         this.onDelete = null;
-        this.onEdit = null;
+        this.onLoadUpdate = null;
+        this.onUpdate = null;
         this.onDuplicate = null;
     }
 
@@ -16,8 +19,8 @@ class TableView {
 
         } else if (event.target.classList.contains("table__action--edit")) {
             const id = event.target.dataset.id
-            if (this.onEdit) {
-                this.onUpdate(id)
+            if (this.onUpdate) {
+                this.onLoadUpdate(id)
             }
 
         } else if (event.target.classList.contains("table__action--duplicate")) {
@@ -28,11 +31,11 @@ class TableView {
         }
     }
 
-    render (data) {
+    render (items) {
 
-        tableBody.innerHTML = ""
+        this.tableBody.innerHTML = ""
     
-        for (const item of data) {
+        for (const item of items) {
 
             const newRow = document.createElement("tr")
             newRow.classList.add("table__row")

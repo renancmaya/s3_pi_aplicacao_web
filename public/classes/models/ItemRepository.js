@@ -1,16 +1,20 @@
-// 1. a classe é um molde de dados (características) ou um gerente operacional (ferramentas)?
-// 2. qual configuração fixa precisa ser lida repetidamente por várias funções?
-// 3. qual dado precisa sobreviver na memória entre o fim de uma ação e o início de outra?
-
-class Ledger {
+export default class ItemRepository {
 
     constructor () {
         this.key = "financialRecords";
-        this.items = !localStorage.getItem(this.key) ? getAll(this.key) : localStorage.setItem(this.key, JSON.stringify([]))
+        if (!localStorage.getItem(this.key)) {
+            localStorage.setItem(this.key, JSON.stringify([]))
+        }
+        this.items = this.getAll()
     }
     
-    getAll (key) {
-        return JSON.parse(localStorage.getItem(key))
+    getAll () {
+        return JSON.parse(localStorage.getItem(this.key))
+    }
+
+    getByID (id) {
+        const items = this.getAll()
+        return items.find(item => item.id == id)
     }
 
     add (event) {

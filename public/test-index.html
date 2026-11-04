@@ -10,6 +10,7 @@
 
     <h1>Controle de Despesas</h1>
 
+    <!-- Formulário de adição e edição-->
     <div class="container">
         <h2>Adicionar Registro</h2>
         <form id="form">
@@ -45,7 +46,7 @@
         </form>
     </div>
 
-    <!-- barra de filtros -->
+    <!-- Barra de filtros -->
     <div class="container filters">
         <div>
             <label for="filter-description">Buscar descrição</label>
@@ -64,8 +65,10 @@
             <input type="text" id="filter-category" placeholder="">
         </div>
         <div>
-            <label for="filter-due-date">Data</label>
-            <input type="text" id="filter-due-date" placeholder="">
+            <label for="filter-due-date-min">Data inicial</label>
+            <input type="text" id="filter-due-date-min" placeholder="">
+            <label for="filter-due-date-max">Data final<label>
+            <input type="text" id="filter-due-date-max" placeholder="">
         </div>
         <div>
             <label for="filter-value-min">Valor mínimo</label>
@@ -74,10 +77,11 @@
             <input type="text" id="filter-value-max" placeholder="">
         </div>
         <div class="filters__actions">
-            <button type="button" id="apply-filters" class="button">Aplicar</button>
+            <button type="button" id="submit-filter-btn" class="button">Aplicar</button>
         </div>
     </div>
-
+    
+    <!-- Tabela de registros -->
     <div class="container">
         <h2>Histórico</h2>
         <table>
@@ -120,6 +124,6 @@
     </div>
 
     <script src="mockData.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
