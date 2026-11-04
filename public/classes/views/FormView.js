@@ -11,14 +11,29 @@ export default class FormView {
         this.submitBtn = document.getElementById('submit');
         this.clearBtn = document.getElementById('clear');
 
-        this.onAdd = null;
+        this.onSave = null;
         this.onUpdate = null;
         this.onLoadUpdate = null;
+
+        this.form.addEventListener('submit', (event) => this.submitForm(event))
     }
 
     // Continuar daqui
-    bindEvents () {
-        const form = document.getElementById("form");
+    submitForm (event) {
+        event.preventDefault()
+        const item = {
+            id: this.idField.value,
+            description: this.descriptionField.value,
+            type: this.typeField.value,
+            category: this.categoryField.value,
+            dueDate: this.dueDateField.value,
+            value: this.valueField.value,
+        }
+
+        if (this.onSave) {
+            this.onSave(item)
+        }
+
         /*const idField = document.getElementById("id");
 
         if (idField.value == "") {
@@ -27,10 +42,10 @@ export default class FormView {
         } else {
             form.removeEventListener("submit", onAdd);
             form.addEventListener("submit", onUpdate)    ;      
-        }*/
+        }
 
         const clearBtn = document.getElementById("clear");
-        clearBtn.addEventListener("click", reset);
+        clearBtn.addEventListener("click", reset);*/
     }
 
     loadUpdate (item) {

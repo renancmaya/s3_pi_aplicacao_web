@@ -17,43 +17,15 @@ export default class ItemRepository {
         return items.find(item => item.id == id)
     }
 
-    add (event) {
-
-        event.preventDefault()
-        const items = getAll(this.key)
-
-        const id = items.length > 0 ? items[items.length - 1].id + 1 : 1
-
-        const item = {
-            id: id,
-            description: document.getElementById("description").value,
-            type: document.getElementById("type").value,
-            category: document.getElementById("category").value,
-            dueDate: document.getElementById("due-date").value,
-            value: document.getElementById("value").value,
-        }
-
+    add (item) {
+        const items = this.getAll()
+        item.id = items.length > 0 ? items[items.length - 1].id + 1 : 1
         items.push(item)
         localStorage.setItem(this.key, JSON.stringify(items))
-        //drawTable(getAll(this.key))
-        //clearForm()
-        //configureForm()
-
     }
 
-    update (event) {
-        event.preventDefault()
-        const items = getAll(this.key)
-
-        const item = {
-            id: document.getElementById("id").value,
-            description: document.getElementById("description").value,
-            type: document.getElementById("type").value,
-            category: document.getElementById("category").value,
-            dueDate: document.getElementById("due-date").value,
-            value: document.getElementById("value").value,
-        }
-
+    update (item) {
+        const items = this.getAll()
         const newItems = items.map(mapItem => {
 
             if (mapItem.id == item.id) {
@@ -64,10 +36,6 @@ export default class ItemRepository {
         })
         
         localStorage.setItem(this.key, JSON.stringify(newItems));
-        //drawTable(getAll(this.key))
-        //clearForm()
-        //configureForm()
-
     }
 
 

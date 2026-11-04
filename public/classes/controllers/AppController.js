@@ -8,7 +8,7 @@ export default class AppController {
         this.filterService = filterService;
 
         this.table.onLoadUpdate = (id) => this.handleLoadUpdate(id)
-        this.form.onAdd = (item) => this.handleAdd(item) 
+        this.form.onSave = (item) => this.handleSave(item) 
         this.form.onUpdate = (id) => this.handleUpdate(id)
         this.table.onDelete = (id) => this.handleDelete(id)
         this.table.onDuplicate = (id) => this.handleDuplicate(id)
@@ -27,7 +27,13 @@ export default class AppController {
     }
 
     handleSave (item) {
-        this.database.add
+        if (item.id) {
+            this.repository.update(item)
+        } else {
+            this.repository.add(item)
+        }
+        const items = this.repository.getAll()
+        this.table.render(items)
     }
 
     handleDelete (id) {
