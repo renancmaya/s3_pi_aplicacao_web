@@ -2,33 +2,29 @@ export default class TableView {
 
     constructor () {
         this.tableBody = document.getElementById("table-body");
-        this.tableBody.addEventListener("click", this.manageTableClicks)
+        this.tableBody.addEventListener("click", (event) => this.manageTableClicks(event))
 
-        this.onDelete = null;
         this.onLoadUpdate = null;
-        this.onUpdate = null;
         this.onDuplicate = null;
+        this.onDelete = null;
     }
 
     manageTableClicks (event) {
 
         if (event.target.classList.contains("table__action--delete")) {
             const id = event.target.dataset.id
-            console.log("Clicou em deletar")
             if (this.onDelete) {
                 this.onDelete(id)
             }
             
         } else if (event.target.classList.contains("table__action--edit")) {
             const id = event.target.dataset.id
-            console.log("Clicou em editar")
-            if (this.onUpdate) {
+            if (this.onLoadUpdate) {
                 this.onLoadUpdate(id)
             }
             
         } else if (event.target.classList.contains("table__action--duplicate")) {
             const id = event.target.dataset.id
-            console.log("Clicou em duplicar")
             if (this.onDuplicate) {
                 this.onDuplicate(id)
             }

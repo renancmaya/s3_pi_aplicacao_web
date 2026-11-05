@@ -13,39 +13,26 @@ export default class FormView {
 
         this.onSave = null;
         this.onUpdate = null;
-        this.onLoadUpdate = null;
 
-        this.form.addEventListener('submit', (event) => this.submitForm(event))
+        this.form.addEventListener('submit', (event) => this.submit(event))
+        this.clearBtn.addEventListener('click', (event) => this.clear(event))
     }
-
+        
     // Continuar daqui
-    submitForm (event) {
+    submit (event) {
         event.preventDefault()
         const item = {
-            id: this.idField.value,
+            id: parseFloat(this.idField.value),
             description: this.descriptionField.value,
             type: this.typeField.value,
             category: this.categoryField.value,
             dueDate: this.dueDateField.value,
-            value: this.valueField.value,
+            value: parseFloat(this.valueField.value),
         }
 
         if (this.onSave) {
             this.onSave(item)
         }
-
-        /*const idField = document.getElementById("id");
-
-        if (idField.value == "") {
-            form.removeEventListener("submit", onUpdate);
-            form.addEventListener("submit", onAdd);
-        } else {
-            form.removeEventListener("submit", onAdd);
-            form.addEventListener("submit", onUpdate)    ;      
-        }
-
-        const clearBtn = document.getElementById("clear");
-        clearBtn.addEventListener("click", reset);*/
     }
 
     loadUpdate (item) {
@@ -59,13 +46,12 @@ export default class FormView {
         this.submitBtn.innerHTML = 'Atualizar registro'
     }
 
-    reset () {        
-        form.reset()
-        clearBtn.classList.remove("show")
-        idField.removeAttribute("value")
-        submit.innerHTML = "Adicionar registro"
-        bindEvents()
-
+    clear () {
+        this.form.reset() 
+        this.clearBtn.classList.remove("show")
+        this.idField.removeAttribute("value")
+        this.submitBtn.innerHTML = "Adicionar registro"
+        console.log("executou o reset em FormView")
     }
 
 }

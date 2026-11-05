@@ -18,7 +18,6 @@ export default class AppController {
     init () {
         const items = this.repository.getAll()
         this.table.render(items)
-        console.log("Iniciou com sucesso")
     }
 
     handleLoadUpdate (id) {
@@ -37,15 +36,15 @@ export default class AppController {
     }
 
     handleDelete (id) {
-        this.database.delete(id)
-        newArray = this.database.getAll()
-        this.table.render(newArray)
+        this.repository.delete(id)
+        const items = this.repository.getAll()
+        this.table.render(items)
     }
 
     handleDuplicate (id) {
-        this.database.duplicate(id)
-        newArray = this.database.getAll()
-        this.table.render(newArray)
+        this.repository.duplicate(id)
+        const items = this.repository.getAll()
+        this.table.render(items)
     }
 
     handleFilters (filters) {

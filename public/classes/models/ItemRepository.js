@@ -1,3 +1,5 @@
+import Item from './Item.js'
+
 export default class ItemRepository {
 
     constructor () {
@@ -12,7 +14,7 @@ export default class ItemRepository {
         return JSON.parse(localStorage.getItem(this.key))
     }
 
-    getByID (id) {
+    getById (id) {
         const items = this.getAll()
         return items.find(item => item.id == id)
     }
@@ -27,34 +29,33 @@ export default class ItemRepository {
     update (item) {
         const items = this.getAll()
         const newItems = items.map(mapItem => {
-
+            
             if (mapItem.id == item.id) {
                 return item
             }
-
+            
             return mapItem
         })
         
         localStorage.setItem(this.key, JSON.stringify(newItems));
     }
-
-
+    
+    
     delete (id) {
-        this.items = this.items.filter(item => item.id != id);
-        localStorage.setItem(this.key, JSON.stringify(this.items));
+        const items = this.getAll()
+        const newArray = items.filter(item => item.id != id);
+        localStorage.setItem(this.key, JSON.stringify(newArray));
     }
 
     duplicate (id) {
-        const index = this.items.findIndex(item => item.id == id);
-        const referenceItem = this.items[index];
-        const newId = this.items[this.items.length - 1].id + 1
-        const newItem = new Item({
-            ...referenceItem,
-            id: newId
-        })
+        const items = this.getAll()
+        const index = items.findIndex(item => item.id == id);
+        const referenceItem = items[index];
+        const newId = items[items.length - 1].id + 1
+        const newItem = new Item({...referenceItem, id: newId})
 
-        this.items.push(newItem)
-        localStorage.setItem(this.key, JSON.stringify(this.items))
+        items.push(newItem)
+        localStorage.setItem(this.key, JSON.stringify(items))
     }
 
 
