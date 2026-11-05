@@ -1,6 +1,6 @@
 export default class FilterView {
     constructor () {
-        
+        this.filterForm = document.getElementById('filter-form')
         this.searchByDescription = document.getElementById('filter-description')
         this.filterByType = document.getElementById('filter-type')
         this.filterByCategory = document.getElementById('filter-category')
@@ -11,11 +11,12 @@ export default class FilterView {
         this.submitFilterBtn = document.getElementById('submit-filter-btn')
         
         this.onFilter = null
-        this.submitFilterBtn.addEventListener('submit', (event) => this.assembleFilters(event))
+        this.filterForm.addEventListener('submit', (event) => this.assembleFilters(event))
     }
 
     assembleFilters (event) {
         event.preventDefault()
+        console.log("Botão de filtros clicado")
         const filters = {
             searchByDescription: this.searchByDescription.value,
             filterByType: this.filterByType.value,
@@ -28,6 +29,8 @@ export default class FilterView {
         
         if (this.onFilter) {
             this.onFilter(filters)
+            console.log("Carregou filtros")
+            console.log(filters)
         }
     }
 }

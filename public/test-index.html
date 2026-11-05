@@ -47,7 +47,7 @@
     </div>
 
     <!-- Barra de filtros -->
-    <div class="container filters">
+    <form id="filter-form" class="container filters">
         <div>
             <label for="filter-description">Buscar descrição</label>
             <input type="text" id="filter-description" placeholder="">
@@ -77,9 +77,9 @@
             <input type="text" id="filter-value-max" placeholder="">
         </div>
         <div class="filters__actions">
-            <button type="button" id="submit-filter-btn" class="button">Aplicar</button>
+            <input type="submit" id="submit-filter-btn" class="button" value="Aplicar filtros">
         </div>
-    </div>
+    </form>
     
     <!-- Tabela de registros -->
     <div class="container">
