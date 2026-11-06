@@ -18,9 +18,9 @@ export default class FormView {
         this.clearBtn.addEventListener('click', (event) => this.clear(event))
     }
         
-    // Continuar daqui
     submit (event) {
         event.preventDefault()
+
         const item = {
             id: parseFloat(this.idField.value),
             description: this.descriptionField.value,

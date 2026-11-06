@@ -14,23 +14,26 @@ export default class FilterView {
         this.filterForm.addEventListener('submit', (event) => this.assembleFilters(event))
     }
 
+    // função para remover filtros
+
     assembleFilters (event) {
         event.preventDefault()
-        console.log("Botão de filtros clicado")
         const filters = {
             searchByDescription: this.searchByDescription.value,
             filterByType: this.filterByType.value,
             filterByCategory: this.filterByCategory.value,
             filterByDueDateMin: this.filterByDueDateMin.value,
-            filterByDueDateMax: this.filterByValueMax.value,
+            filterByDueDateMax: this.filterByDueDateMax.value,
             filterByValueMin: this.filterByValueMin.value,
             filterByValueMax: this.filterByValueMax.value,
         }
+        console.log("Carregou filtros")
+        console.log(filters)
+        console.log(filters.filterByDueDateMin)
+        console.log(filters.filterByDueDateMax)
         
         if (this.onFilter) {
             this.onFilter(filters)
-            console.log("Carregou filtros")
-            console.log(filters)
         }
     }
 }

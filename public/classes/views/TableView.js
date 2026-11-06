@@ -34,9 +34,9 @@ export default class TableView {
     render (items) {
 
         this.tableBody.innerHTML = ""
+        const currency = new Intl.NumberFormat('pt-BR', {style: "currency", currency: "BRL"})
     
         for (const item of items) {
-
             const newRow = document.createElement("tr")
             newRow.classList.add("table__row")
             newRow.id = item.id
@@ -60,11 +60,11 @@ export default class TableView {
             
             const dueDateCell = document.createElement("td")
             dueDateCell.classList.add("table__cell")
-            dueDateCell.textContent = item.dueDate
+            dueDateCell.textContent = new Date(item.dueDate).toLocaleString('pt-BR', {day: '2-digit', month: 'numeric', year: 'numeric'})
             
             const valueCell = document.createElement("td")
             valueCell.classList.add("table__cell")
-            valueCell.textContent = parseFloat(item.value)
+            valueCell.textContent = currency.format(Number(item.value))
 
             const actionsCell = document.createElement("td")
             actionsCell.classList.add("table__cell", "table__actions")
