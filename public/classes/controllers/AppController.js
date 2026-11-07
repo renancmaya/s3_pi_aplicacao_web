@@ -1,3 +1,5 @@
+import { categoryList } from "../../mockData.js";
+
 export default class AppController {
 
     constructor (repository, form, table, filterForm, filterService) {
@@ -16,6 +18,9 @@ export default class AppController {
     }
 
     init () {
+        const categories = categoryList
+        this.form.loadCategories(categories)
+        this.filterForm.loadCategories(categories)
         const items = this.repository.getAll()
         this.table.render(items)
     }

@@ -14,6 +14,15 @@ export default class FilterView {
         this.filterForm.addEventListener('submit', (event) => this.assembleFilters(event))
     }
 
+    loadCategories (categories) {
+        for (const category of categories) {
+            const newOption = document.createElement('option')
+            newOption.value = category.name.toLowerCase().replaceAll(' ', '-')
+            newOption.innerHTML = category.name
+            this.filterByCategory.append(newOption)
+        }
+    }
+
     // função para remover filtros
 
     assembleFilters (event) {

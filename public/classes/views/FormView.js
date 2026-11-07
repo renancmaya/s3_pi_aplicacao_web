@@ -1,5 +1,4 @@
 export default class FormView {
-
     constructor () {
         this.form = document.getElementById('form');
         this.idField = document.getElementById('id');
@@ -17,7 +16,16 @@ export default class FormView {
         this.form.addEventListener('submit', (event) => this.submit(event))
         this.clearBtn.addEventListener('click', (event) => this.clear(event))
     }
-        
+
+    loadCategories (categories) {
+        for (const category of categories) {
+            const newOption = document.createElement('option')
+            newOption.value = category.name.toLowerCase().replaceAll(' ', '-')
+            newOption.innerHTML = category.name
+            this.categoryField.append(newOption)
+        }
+    }
+
     submit (event) {
         event.preventDefault()
 
