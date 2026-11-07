@@ -33,8 +33,8 @@ export default class FilterView {
             filterByCategory: this.filterByCategory.value,
             filterByDueDateMin: this.filterByDueDateMin.value,
             filterByDueDateMax: this.filterByDueDateMax.value,
-            filterByValueMin: this.filterByValueMin.value,
-            filterByValueMax: this.filterByValueMax.value,
+            filterByValueMin: parseFloat(this.filterByValueMin.value),
+            filterByValueMax: parseFloat(this.filterByValueMax.value),
         }
         console.log("Carregou filtros")
         console.log(filters)

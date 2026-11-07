@@ -1,29 +1,46 @@
 export default class FilterService {
-    constructor() {
-        
-    }
+    constructor() {}
 
     filterItems (items, filters) {
         let filteredItems = items
         const descriptionValue = filters.searchByDescription
         const typeValue = filters.filterByType
-        const CategoryValue = filters.filterByCategory
+        const categoryValue = filters.filterByCategory
         const dueDateMinValue = filters.filterByDueDateMin
         const dueDateMaxValue = filters.filterByDueDateMax
         const valueMinValue = filters.filterByValueMin
         const valueMaxValue = filters.filterByValueMax
-        filteredItems = descriptionValue ? filteredItems.filter(item => item.description.includes(descriptionValue)) : filteredItems
-        filteredItems = typeValue ? filteredItems.filter(item => item.type == typeValue) : filteredItems
-        filteredItems = CategoryValue ? filteredItems.filter(item => item.category == CategoryValue) : filteredItems
-        filteredItems = dueDateMinValue && dueDateMaxValue ? filteredItems.filter(item => item.dueDate >= dueDateMinValue && item.dueDate <= dueDateMaxValue) : filteredItems
-        filteredItems = valueMinValue ? valueMinValue : filteredItems
-        filteredItems = valueMaxValue ? valueMaxValue : filteredItems
+
+        filteredItems = this.searchByDescription(filteredItems, descriptionValue)
+        filteredItems = this.filterByType(filteredItems, typeValue)
+        filteredItems = this.filterByCategory(filteredItems, categoryValue)
+        filteredItems = this.filterByDueDate(filteredItems, dueDateMinValue, dueDateMaxValue)
+        filteredItems = this.filterByValue(filteredItems, valueMinValue, valueMaxValue)
         
-        // debug
-        console.log(filteredItems)
-        console.log(dueDateMaxValue)
-        console.log(items[0].dueDate)
-        console.log(dueDateMaxValue > items[0].dueDate)
         return filteredItems
+    }
+
+    searchByDescription (items, filter) {
+        return filter ? items.filter(item => item.description.includes(filter)) : items
+    }
+    
+    filterByType (items, filter) {
+        return filter ? items.filter(item => item.type == filter) : items
+    }
+
+    filterByCategory (items, filter) {
+        return filter ? items.filter(item => item.category == filter) : items
+    }
+
+    filterByDueDate (items, filterMin, filterMax) {
+        items = items.filter(item => !filterMin || item.dueDate >= filterMin)
+        items = items.filter(item => !filterMax || item.dueDate <= filterMax)
+        return items
+    }
+
+    filterByValue (items, filterMin, filterMax) {
+        items = items.filter(item => !filterMin || item.value >= filterMin)
+        items = items.filter(item => !filterMax || item.value <= filterMax)
+        return items
     }
 }
