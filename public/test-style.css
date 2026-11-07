@@ -44,6 +44,14 @@ input, select, button {
     margin-top: 4px;
 }
 
+.button {
+    cursor: pointer;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
 table { 
     width: 100%; 
     table-layout: auto;

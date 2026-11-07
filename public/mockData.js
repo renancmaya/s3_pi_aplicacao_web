@@ -160,3 +160,36 @@ const mockData = [
     value: -520.10
   }
 ];
+
+export const categoryList = [
+  { "id": 1, "type": "saída", "name": "Academia" },
+  { "id": 2, "type": "saída", "name": "Alimentação" },
+  { "id": 3, "type": "saída", "name": "Aluguel" },
+  { "id": 4, "type": "saída", "name": "Anúncios" },
+  { "id": 5, "type": "saída", "name": "Beleza" },
+  { "id": 6, "type": "saída", "name": "Combustível" },
+  { "id": 7, "type": "saída", "name": "Contabilidade" },
+  { "id": 8, "type": "saída", "name": "Contas" },
+  { "id": 9, "type": "saída", "name": "Cursos" },
+  { "id": 10, "type": "saída", "name": "Dependentes" },
+  { "id": 11, "type": "saída", "name": "Dívidas" },
+  { "id": 12, "type": "saída", "name": "Embalagens" },
+  { "id": 13, "type": "saída", "name": "Estoque" },
+  { "id": 14, "type": "entrada", "name": "Faturamento" },
+  { "id": 15, "type": "saída", "name": "Impostos" },
+  { "id": 16, "type": "saída", "name": "Internet" },
+  { "id": 17, "type": "saída", "name": "Investimentos" },
+  { "id": 18, "type": "saída", "name": "Lazer" },
+  { "id": 19, "type": "saída", "name": "Manutenção" },
+  { "id": 20, "type": "saída", "name": "Móveis" },
+  { "id": 21, "type": "saída", "name": "Pets" },
+  { "id": 22, "type": "saída", "name": "Pró-Labore" },
+  { "id": 23, "type": "entrada", "name": "Renda Extra" },
+  { "id": 24, "type": "entrada", "name": "Rendimentos" },
+  { "id": 25, "type": "entrada", "name": "Salário" },
+  { "id": 26, "type": "saída", "name": "Saúde" },
+  { "id": 27, "type": "saída", "name": "Softwares" },
+  { "id": 28, "type": "saída", "name": "Supermercado" },
+  { "id": 29, "type": "saída", "name": "Tarifas" },
+  { "id": 30, "type": "saída", "name": "Veículo" }
+];
