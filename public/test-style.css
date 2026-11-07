@@ -33,6 +33,14 @@ form {
     display: block;
 }
 
+.filter__clear {
+    display: none;
+}
+
+.filter__clear.show {
+    display: block;
+}
+
 .full-width { 
     grid-column: 1 / -1; 
 }

@@ -3,20 +3,11 @@ export default class FilterService {
 
     filterItems (items, filters) {
         let filteredItems = items
-        const descriptionValue = filters.searchByDescription
-        const typeValue = filters.filterByType
-        const categoryValue = filters.filterByCategory
-        const dueDateMinValue = filters.filterByDueDateMin
-        const dueDateMaxValue = filters.filterByDueDateMax
-        const valueMinValue = filters.filterByValueMin
-        const valueMaxValue = filters.filterByValueMax
-
-        filteredItems = this.searchByDescription(filteredItems, descriptionValue)
-        filteredItems = this.filterByType(filteredItems, typeValue)
-        filteredItems = this.filterByCategory(filteredItems, categoryValue)
-        filteredItems = this.filterByDueDate(filteredItems, dueDateMinValue, dueDateMaxValue)
-        filteredItems = this.filterByValue(filteredItems, valueMinValue, valueMaxValue)
-        
+        filteredItems = this.searchByDescription(filteredItems, filters.description)
+        filteredItems = this.filterByType(filteredItems, filters.type)
+        filteredItems = this.filterByCategory(filteredItems, filters.category)
+        filteredItems = this.filterByDueDate(filteredItems, filters.dueDateMin, filters.dueDateMax)
+        filteredItems = this.filterByValue(filteredItems, filters.valueMin, filters.valueMax)
         return filteredItems
     }
 

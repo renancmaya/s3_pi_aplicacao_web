@@ -8,10 +8,12 @@ export default class FilterView {
         this.filterByDueDateMax = document.getElementById('filter-due-date-max')
         this.filterByValueMin = document.getElementById('filter-value-min')
         this.filterByValueMax = document.getElementById('filter-value-max')
-        this.submitFilterBtn = document.getElementById('submit-filter-btn')
+        this.submitFilterBtn = document.getElementById('filter-submit-btn')
+        this.clearFilterBtn = document.getElementById('filter-clear-btn')
         
         this.onFilter = null
         this.filterForm.addEventListener('submit', (event) => this.assembleFilters(event))
+        this.clearFilterBtn.addEventListener('click', (event) => this.clearFilters(event))
     }
 
     loadCategories (categories) {
@@ -23,26 +25,32 @@ export default class FilterView {
         }
     }
 
-    // função para remover filtros
-
     assembleFilters (event) {
         event.preventDefault()
         const filters = {
-            searchByDescription: this.searchByDescription.value,
-            filterByType: this.filterByType.value,
-            filterByCategory: this.filterByCategory.value,
-            filterByDueDateMin: this.filterByDueDateMin.value,
-            filterByDueDateMax: this.filterByDueDateMax.value,
-            filterByValueMin: parseFloat(this.filterByValueMin.value),
-            filterByValueMax: parseFloat(this.filterByValueMax.value),
+            description: this.searchByDescription.value,
+            type: this.filterByType.value,
+            category: this.filterByCategory.value,
+            dueDateMin: this.filterByDueDateMin.value,
+            dueDateMax: this.filterByDueDateMax.value,
+            valueMin: parseFloat(this.filterByValueMin.value),
+            valueMax: parseFloat(this.filterByValueMax.value),
         }
-        console.log("Carregou filtros")
-        console.log(filters)
-        console.log(filters.filterByDueDateMin)
-        console.log(filters.filterByDueDateMax)
         
         if (this.onFilter) {
             this.onFilter(filters)
         }
+
+        if (Object.values(filters).some(value => Boolean(value))) {
+            this.clearFilterBtn.classList.add('show')
+        }
+
+        console.log(filters)
+
+    }
+
+    clearFilters () {
+        this.clearFilterBtn.classList.remove('show')
+        this.filterForm.reset()
     }
 }
