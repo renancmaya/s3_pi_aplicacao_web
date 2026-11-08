@@ -19,6 +19,16 @@ export default class AppController {
         this.table.onSort = (column) => this.handleSort(column)
 
         // Outros atributos
+        this.currentFilters = {
+            nulldescription: null,
+            type: null,
+            category: null,
+            dueDateMin: null,
+            dueDateMax: null,
+            valueMin: null,
+            valueMax: null,
+        }
+
         this.currentSort = {
             column: null,
             order: null,
@@ -61,11 +71,10 @@ export default class AppController {
     }
 
     handleFilters (filters) {
-        const items = this.repository.getAll();
-        const filteredItems = this.filterService.filterItems(items, filters)
-        this.table.render(filteredItems)
+        this.currentFilters = filters
+        this.refreshTable()
     }
-
+    
     handleSort (column) {
         if (this.currentSort.column === column && this.currentSort.order === 'asc') {
             this.currentSort.order = 'desc'
@@ -77,7 +86,14 @@ export default class AppController {
             this.currentSort.order = 'asc'
         }
         
-        this.sortService.sort(this.currentSort.column, this.currentSort.order)
         this.table.updateSortBtn(this.currentSort.column, this.currentSort.order)
+        this.refreshTable()
+    }
+
+    refreshTable() {
+        const items = this.repository.getAll();
+        const filteredItems = this.filterService.filterItems(items, this.currentFilters)
+        const sortedItems = this.sortService.sort(filteredItems, this.currentSort)
+        this.table.render(sortedItems)
     }
 }
