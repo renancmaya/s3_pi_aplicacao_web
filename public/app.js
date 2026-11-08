@@ -4,6 +4,7 @@ import FormView from './classes/views/FormView.js'
 import TableView from './classes/views/TableView.js'
 import FilterView from './classes/views/FilterView.js'
 import FilterService from './classes/models/FilterService.js'
+import SortService from './classes/models/SortService.js'
 import AppController from './classes/controllers/AppController.js'
 
 const repository = new ItemRepository();
@@ -11,5 +12,6 @@ const form = new FormView();
 const table = new TableView();
 const filterForm = new FilterView();
 const filterService = new FilterService();
-const controller = new AppController(repository, form, table, filterForm, filterService);
+const sortService = new SortService();
+const controller = new AppController(repository, form, table, filterForm, filterService, sortService);
 controller.init();

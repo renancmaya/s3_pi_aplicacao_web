@@ -1,3 +1,7 @@
+button {
+    border: none;
+}
+
 body { 
     font-family: sans-serif; 
     max-width: 900px; 
@@ -112,4 +116,34 @@ th {
 
 .table__action * {
     pointer-events: none;
+}
+
+.table__sort-button {
+    display: inline-flex;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    margin-block: auto;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.table__header[aria-sort="ascending"] .table__sort-button,
+.table__header[aria-sort="descending"] .table__sort-button {
+    background-color: hsl(214, 80%, 70%);
+    border-radius: 4px;
+}
+
+.table__header[aria-sort="descending"] .table__sort-button {
+    transform: rotate(180deg);
+}
+
+.table__sort-button * {
+    pointer-events: none;
+}
+
+.table__sort-icon {
+    color: black
 }
