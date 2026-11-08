@@ -54,20 +54,17 @@ export default class AppController {
         } else {
             this.repository.add(item)
         }
-        const items = this.repository.getAll()
-        this.table.render(items)
+        this.refreshTable()
     }
 
     handleDelete (id) {
         this.repository.delete(id)
-        const items = this.repository.getAll()
-        this.table.render(items)
+        this.refreshTable()
     }
 
     handleDuplicate (id) {
         this.repository.duplicate(id)
-        const items = this.repository.getAll()
-        this.table.render(items)
+        this.refreshTable()
     }
 
     handleFilters (filters) {
