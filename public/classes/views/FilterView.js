@@ -46,7 +46,6 @@ export default class FilterView {
         }
 
         console.log(filters)
-
     }
 
     clearFilters () {
