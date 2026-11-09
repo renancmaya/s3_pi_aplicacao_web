@@ -29,7 +29,7 @@ export default class FormView {
     submit (event) {
         event.preventDefault()
 
-        const item = {
+        const itemData = {
             id: parseFloat(this.idField.value),
             description: this.descriptionField.value,
             type: this.typeField.value,
@@ -39,10 +39,11 @@ export default class FormView {
         }
 
         if (this.onSave) {
-            this.onSave(item)
+            this.onSave(itemData)
         }
     }
 
+    // refatorar para receber objeto Item
     loadUpdate (item) {
         this.idField.value = item.id;
         this.descriptionField.value = item.description;

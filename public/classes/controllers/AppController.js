@@ -1,3 +1,4 @@
+import Item from "../models/Item.js";
 import { categoryList } from "../../mockData.js";
 
 export default class AppController {
@@ -11,7 +12,7 @@ export default class AppController {
         this.filterService = filterService;
         this.sortService = sortService
         this.table.onLoadUpdate = (id) => this.handleLoadUpdate(id)
-        this.form.onSave = (item) => this.handleSave(item) 
+        this.form.onSave = (itemData) => this.handleSave(itemData) 
         this.form.onUpdate = (id) => this.handleUpdate(id)
         this.table.onDelete = (id) => this.handleDelete(id)
         this.table.onDuplicate = (id) => this.handleDuplicate(id)
@@ -48,12 +49,14 @@ export default class AppController {
         this.form.loadUpdate(item)
     }
 
-    handleSave (item) {
+    handleSave (itemData) {
+        const item = new Item(itemData)
         if (item.id) {
             this.repository.update(item)
         } else {
             this.repository.add(item)
         }
+        console.log(item)
         this.refreshTable()
     }
 

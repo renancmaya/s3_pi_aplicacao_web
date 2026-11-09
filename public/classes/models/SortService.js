@@ -4,9 +4,6 @@ export default class SortService {
     }
 
     sort (items, sort) {
-        console.log(items)
-        console.log(sort)
-
         if (!sort || !sort.column || !sort.order) {
             return [...items]
         }
