@@ -16,6 +16,12 @@
         <form id="form">
             <input type="hidden" id="id">
             <div>
+                <label for="status">Status</label>
+                <select id="status" required>
+                    <option value="">Selecione...</option>
+                </select>
+            </div>
+            <div>
                 <label for="description">Descrição</label>
                 <input type="text" id="description" required>
             </div>
@@ -23,8 +29,6 @@
                 <label for="type">Tipo</label>
                 <select id="type" required>
                     <option value="">Selecione...</option>
-                    <option value="entrada">Entrada</option>
-                    <option value="saida">Saída</option>
                 </select>
             </div>
             <div>
@@ -50,6 +54,12 @@
 
     <!-- Barra de filtros -->
     <form id="filter-form" class="container filters">
+        <div>
+            <label for="filter-status">Status</label>
+            <select id="filter-status">
+                <option value="">Todas</option>
+            </select>
+        </div>
         <div>
             <label for="filter-description">Buscar descrição</label>
             <input type="text" id="filter-description" placeholder="">
@@ -90,7 +100,13 @@
         <table>
             <thead id="table-head" class="table__head">
                 <tr class="table__row">
-                    <th class="table__header">ID</th>
+                    <!-- <th class="table__header">ID</th> -->
+                    <th class="table__header" aria-sort="none">
+                        Status
+                        <button data-sort="type"  class="table__sort-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="table__sort-icon"><path d="M12 15.0006L7.75732 10.758L9.17154 9.34375L12 12.1722L14.8284 9.34375L16.2426 10.758L12 15.0006Z"></path></svg>
+                        </button>
+                    </th>
                     <th class="table__header" aria-sort="none">
                         Descrição
                         <button data-sort="description"  class="table__sort-button">

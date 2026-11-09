@@ -11,7 +11,7 @@ export default class TableView {
         this.onDelete = null;
         this.onSort = null;
 
-        //this.statusDictionary = {}
+        this.statusDictionary = {}
         this.typesDictionary = {}
         this.categoriesDictionary = {}
     }
@@ -24,7 +24,7 @@ export default class TableView {
     }
 
     setupDictionaries ({statuses, types, categories}) {
-        //this.statusDictionary = this.createDictionary(statuses)
+        this.statusDictionary = this.createDictionary(statuses)
         this.typesDictionary = this.createDictionary(types)
         this.categoriesDictionary = this.createDictionary(categories)
     }
@@ -71,10 +71,14 @@ export default class TableView {
             newRow.id = item.id
             newRow.setAttribute('data-type', item.type)
 
-            const idCell = document.createElement('td')
+            /*const idCell = document.createElement('td')
             idCell.classList.add('table__cell')
-            idCell.textContent = item.id
+            idCell.textContent = item.id*/
             
+            const statusCell = document.createElement('td')
+            statusCell.classList.add('table__cell')
+            statusCell.textContent = this.statusDictionary[item.status] || item.status;
+
             const descriptionCell = document.createElement('td')
             descriptionCell.classList.add('table__cell')
             descriptionCell.textContent = item.description
@@ -114,7 +118,7 @@ export default class TableView {
             duplicateBtn.innerHTML = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z'></path></svg>`
             
             actionsCell.append(editBtn, duplicateBtn, deleteBtn)
-            newRow.append(idCell, descriptionCell, typeCell, categoryCell, dueDateCell, valueCell, actionsCell)
+            newRow.append(/*idCell,*/ statusCell, descriptionCell, typeCell, categoryCell, dueDateCell, valueCell, actionsCell)
             this.tableBody.append(newRow)
 
         }

@@ -23,7 +23,8 @@ export default class AppController {
 
         // Outros atributos
         this.currentFilters = {
-            nulldescription: null,
+            status: null,
+            description: null,
             type: null,
             category: null,
             dueDateMin: null,

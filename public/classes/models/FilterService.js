@@ -3,12 +3,17 @@ export default class FilterService {
 
     filterItems (items, filters) {
         let filteredItems = items
+        filteredItems = this.filterByStatus(filteredItems, filters.status)
         filteredItems = this.searchByDescription(filteredItems, filters.description)
         filteredItems = this.filterByType(filteredItems, filters.type)
         filteredItems = this.filterByCategory(filteredItems, filters.category)
         filteredItems = this.filterByDueDate(filteredItems, filters.dueDateMin, filters.dueDateMax)
         filteredItems = this.filterByValue(filteredItems, filters.valueMin, filters.valueMax)
         return filteredItems
+    }
+
+    filterByStatus (items, filter) {
+        return filter ? items.filter(item => item.status == filter) : items
     }
 
     searchByDescription (items, filter) {

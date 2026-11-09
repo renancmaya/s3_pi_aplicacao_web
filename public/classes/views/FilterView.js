@@ -1,6 +1,7 @@
 export default class FilterView {
     constructor () {
         this.filterForm = document.getElementById('filter-form')
+        this.filterByStatus = document.getElementById('filter-status')
         this.searchByDescription = document.getElementById('filter-description')
         this.filterByType = document.getElementById('filter-type')
         this.filterByCategory = document.getElementById('filter-category')
@@ -34,15 +35,16 @@ export default class FilterView {
         element.append(fragment)
     }
 
-    setupOptions({/*statuses,*/ types, categories}) {
+    setupOptions({statuses, types, categories}) {
+        this.populateSelect(this.filterByStatus, statuses)
         this.populateSelect(this.filterByType, types)
         this.populateSelect(this.filterByCategory, categories)
-        //this.populateSelect(this.statusField, statuses)
     }
 
     assembleFilters (event) {
         event.preventDefault()
         const filters = {
+            status: this.filterByStatus.value,
             description: this.searchByDescription.value,
             type: this.filterByType.value,
             category: this.filterByCategory.value,

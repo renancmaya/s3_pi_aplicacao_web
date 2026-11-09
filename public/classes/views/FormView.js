@@ -2,6 +2,7 @@ export default class FormView {
     constructor () {
         this.form = document.getElementById('form');
         this.idField = document.getElementById('id');
+        this.statusField = document.getElementById('status');
         this.descriptionField = document.getElementById('description');
         this.typeField = document.getElementById('type');
         this.categoryField = document.getElementById('category');
@@ -35,16 +36,17 @@ export default class FormView {
         element.append(fragment)
     }
 
-    setupOptions({/*statuses,*/ types, categories}) {
+    setupOptions({statuses, types, categories}) {
         this.populateSelect(this.typeField, types)
         this.populateSelect(this.categoryField, categories)
-        //this.populateSelect(this.statusField, statuses)
+        this.populateSelect(this.statusField, statuses)
     }
 
     submit (event) {
         event.preventDefault()
 
         const itemData = {
+            status: this.statusField.value,
             id: parseFloat(this.idField.value),
             description: this.descriptionField.value,
             type: this.typeField.value,
@@ -61,6 +63,7 @@ export default class FormView {
     // refatorar para receber objeto Item
     loadUpdate (item) {
         this.idField.value = item.id;
+        this.statusField.value = item.status;
         this.descriptionField.value = item.description;
         this.typeField.value = item.type;
         this.categoryField.value = item.category;
