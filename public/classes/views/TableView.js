@@ -10,6 +10,23 @@ export default class TableView {
         this.onDuplicate = null;
         this.onDelete = null;
         this.onSort = null;
+
+        //this.statusDictionary = {}
+        this.typesDictionary = {}
+        this.categoriesDictionary = {}
+    }
+
+    createDictionary(list) {
+        return list.reduce((acc, item) => {
+            acc[item.slug] = item.name;
+            return acc;
+        }, {});
+    }
+
+    setupDictionaries ({statuses, types, categories}) {
+        //this.statusDictionary = this.createDictionary(statuses)
+        this.typesDictionary = this.createDictionary(types)
+        this.categoriesDictionary = this.createDictionary(categories)
     }
 
     manageHeadClicks (event) {
@@ -45,28 +62,8 @@ export default class TableView {
     }
 
     render (items) {
-
         this.tableBody.innerHTML = ''
         const currency = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
-        const dictionary = {
-            type: {
-                'entrada': 'Entrada',
-                'saida': 'Saída'
-            },
-            
-            category: {
-                'descricao': 'Descrição',
-                'descricao': 'Descrição',
-                'descricao': 'Descrição',
-                'descricao': 'Descrição',
-                'descricao': 'Descrição',
-                
-            },
-
-            status: {
-
-            }
-        }
 
         for (const item of items) {
             const newRow = document.createElement('tr')
@@ -84,11 +81,11 @@ export default class TableView {
             
             const typeCell = document.createElement('td')
             typeCell.classList.add('table__cell')
-            typeCell.textContent = item.type
+            typeCell.textContent = this.typesDictionary[item.type] || item.type;
             
             const categoryCell = document.createElement('td')
             categoryCell.classList.add('table__cell')
-            categoryCell.textContent = item.category
+            categoryCell.textContent = this.categoriesDictionary[item.category] || item.category;
             
             const dueDateCell = document.createElement('td')
             dueDateCell.classList.add('table__cell')

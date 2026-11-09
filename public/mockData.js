@@ -193,3 +193,13 @@ export const categoryList = [
   { "id": 29, "type": "saida", "slug": "tarifas", "name": "Tarifas" },
   { "id": 30, "type": "saida", "slug": "veiculo", "name": "Veículo" }
 ];
+
+export const typeList = [
+  { "id": 1, "slug": "entrada", "name": "Entrada" },
+  { "id": 2, "slug": "saida", "name": "Saída" },
+];
+
+export const statusList = [
+  { "id": 1, "slug": "a-pagar", "name": "A pagar" },
+  { "id": 2, "slug": "pago", "name": "Pago" },
+];

@@ -17,13 +17,28 @@ export default class FormView {
         this.clearBtn.addEventListener('click', (event) => this.clear(event))
     }
 
-    loadCategories (categories) {
-        for (const category of categories) {
-            const newOption = document.createElement('option')
-            newOption.value = category.slug
-            newOption.innerHTML = category.name
-            this.categoryField.append(newOption)
+    populateSelect (element, list) {
+
+        while (element.children.length > 1) {
+            element.lastElementChild.remove();
         }
+        
+        const fragment = document.createDocumentFragment();
+
+        for (const item of list) {
+            const option = document.createElement('option')
+            option.value = item.slug
+            option.textContent = item.name
+            fragment.append(option)
+        }
+
+        element.append(fragment)
+    }
+
+    setupOptions({/*statuses,*/ types, categories}) {
+        this.populateSelect(this.typeField, types)
+        this.populateSelect(this.categoryField, categories)
+        //this.populateSelect(this.statusField, statuses)
     }
 
     submit (event) {

@@ -16,13 +16,28 @@ export default class FilterView {
         this.clearFilterBtn.addEventListener('click', (event) => this.clearFilters(event))
     }
 
-    loadCategories (categories) {
-        for (const category of categories) {
-            const newOption = document.createElement('option')
-            newOption.value = category.slug
-            newOption.innerHTML = category.name
-            this.filterByCategory.append(newOption)
+    populateSelect (element, list) {
+
+        while (element.children.length > 1) {
+            element.lastElementChild.remove();
         }
+        
+        const fragment = document.createDocumentFragment();
+
+        for (const item of list) {
+            const option = document.createElement('option')
+            option.value = item.slug
+            option.textContent = item.name
+            fragment.append(option)
+        }
+
+        element.append(fragment)
+    }
+
+    setupOptions({/*statuses,*/ types, categories}) {
+        this.populateSelect(this.filterByType, types)
+        this.populateSelect(this.filterByCategory, categories)
+        //this.populateSelect(this.statusField, statuses)
     }
 
     assembleFilters (event) {
