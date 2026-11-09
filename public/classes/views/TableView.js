@@ -48,7 +48,26 @@ export default class TableView {
 
         this.tableBody.innerHTML = ''
         const currency = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
-    
+        const dictionary = {
+            type: {
+                'entrada': 'Entrada',
+                'saida': 'Saída'
+            },
+            
+            category: {
+                'descricao': 'Descrição',
+                'descricao': 'Descrição',
+                'descricao': 'Descrição',
+                'descricao': 'Descrição',
+                'descricao': 'Descrição',
+                
+            },
+
+            status: {
+
+            }
+        }
+
         for (const item of items) {
             const newRow = document.createElement('tr')
             newRow.classList.add('table__row')

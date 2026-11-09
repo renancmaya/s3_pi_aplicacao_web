@@ -19,7 +19,7 @@ export default class FilterView {
     loadCategories (categories) {
         for (const category of categories) {
             const newOption = document.createElement('option')
-            newOption.value = category.name.toLowerCase().replaceAll(' ', '-')
+            newOption.value = category.slug
             newOption.innerHTML = category.name
             this.filterByCategory.append(newOption)
         }
