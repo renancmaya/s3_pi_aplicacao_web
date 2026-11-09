@@ -200,6 +200,6 @@ export const typeList = [
 ];
 
 export const statusList = [
-  { "id": 1, "slug": "a-pagar", "name": "A pagar" },
-  { "id": 2, "slug": "pago", "name": "Pago" },
+  { "id": 1, "slug": "pendente", "name": "Pendente" },
+  { "id": 2, "slug": "realizado", "name": "Realizado" },
 ];

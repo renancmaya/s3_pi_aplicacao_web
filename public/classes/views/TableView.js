@@ -3,6 +3,7 @@ export default class TableView {
     constructor () {
         this.tableHead = document.getElementById('table-head')
         this.tableBody = document.getElementById('table-body');
+        this.tableFooter = document.getElementById('table-footer')
         this.tableHead.addEventListener('click', (event) => this.manageHeadClicks(event))
         this.tableBody.addEventListener('click', (event) => this.manageTableClicks(event))
 
@@ -14,6 +15,8 @@ export default class TableView {
         this.statusDictionary = {}
         this.typesDictionary = {}
         this.categoriesDictionary = {}
+
+        this.currency = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
     }
 
     createDictionary(list) {
@@ -63,7 +66,6 @@ export default class TableView {
 
     render (items) {
         this.tableBody.innerHTML = ''
-        const currency = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
 
         for (const item of items) {
             const newRow = document.createElement('tr')
@@ -97,7 +99,7 @@ export default class TableView {
             
             const valueCell = document.createElement('td')
             valueCell.classList.add('table__cell')
-            valueCell.textContent = currency.format(Number(item.value))
+            valueCell.textContent = this.currency.format(Number(item.value))
 
             const actionsCell = document.createElement('td')
             actionsCell.classList.add('table__cell', 'table__actions')
@@ -133,5 +135,10 @@ export default class TableView {
         }
         const sortBtn = this.tableHead.querySelector(`[data-sort="${column}"]`)
         sortBtn.closest('th').setAttribute('aria-sort', order === 'asc' ? 'ascending' : 'descending')
+    }
+
+    displayTotal (total) {
+        const totalCell = document.getElementById('total-cell')
+        totalCell.textContent = this.currency.format(Number(total.total))
     }
 }
