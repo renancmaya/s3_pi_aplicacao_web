@@ -1,4 +1,6 @@
 import Item from "../models/Item.js";
+import { typeList } from "../../mockData.js";
+import { statusList } from "../../mockData.js";
 import { categoryList } from "../../mockData.js";
 
 export default class AppController {
@@ -37,11 +39,17 @@ export default class AppController {
     }
 
     init () {
-        const categories = categoryList
-        this.form.loadCategories(categories)
-        this.filterForm.loadCategories(categories)
-        const items = this.repository.getAll()
-        this.table.render(items)
+        const config = {
+            statuses: statusList,
+            types: typeList,
+            categories: categoryList
+        }
+
+        this.form.setupOptions(config)
+        this.filterForm.setupOptions(config)
+        this.table.setupDictionaries(config)
+
+        this.refreshTable()
     }
 
     handleLoadUpdate (id) {
