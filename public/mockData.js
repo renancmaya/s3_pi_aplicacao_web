@@ -12,7 +12,7 @@ export const mockData = [
     dueDate: "2026-09-05",
     paymentDate: "2026-09-05",
     value: 6500.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     installment: null,
@@ -27,7 +27,7 @@ export const mockData = [
     dueDate: "2026-09-10",
     paymentDate: "2026-09-09",
     value: -1800.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     installment: null,
@@ -41,7 +41,7 @@ export const mockData = [
     dueDate: "2026-09-12",
     paymentDate: "2026-09-12",
     value: -215.80,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     installment: null,
@@ -55,7 +55,7 @@ export const mockData = [
     dueDate: "2026-09-15",
     paymentDate: "2026-09-14",
     value: -119.90,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     installment: null,
@@ -69,7 +69,7 @@ export const mockData = [
     dueDate: "2026-09-16",
     paymentDate: "2026-09-16",
     value: 1850.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal",
     notes: "Desenvolvimento de landing page"
@@ -82,7 +82,7 @@ export const mockData = [
     dueDate: "2026-09-17",
     paymentDate: "2026-09-17",
     value: -635.40,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -94,7 +94,7 @@ export const mockData = [
     dueDate: "2026-09-18",
     paymentDate: "2026-09-18",
     value: -99.90,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -107,7 +107,7 @@ export const mockData = [
     dueDate: "2026-09-20",
     paymentDate: "2026-09-19",
     value: -520.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -120,7 +120,7 @@ export const mockData = [
     dueDate: "2026-09-21",
     paymentDate: "2026-09-21",
     value: -349.90,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     installment: {
       current: 1,
@@ -137,7 +137,7 @@ export const mockData = [
     dueDate: "2026-09-22",
     paymentDate: "2026-09-22",
     value: -39.90,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -150,7 +150,7 @@ export const mockData = [
     dueDate: "2026-09-23",
     paymentDate: "2026-09-23",
     value: -280.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -162,7 +162,7 @@ export const mockData = [
     dueDate: "2026-09-25",
     paymentDate: "2026-09-25",
     value: 185.75,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta investimentos"
   },
@@ -174,7 +174,7 @@ export const mockData = [
     dueDate: "2026-09-26",
     paymentDate: "2026-09-26",
     value: -180.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal"
   },
@@ -186,7 +186,7 @@ export const mockData = [
     dueDate: "2026-09-27",
     paymentDate: "2026-09-27",
     value: -145.90,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -198,7 +198,7 @@ export const mockData = [
     dueDate: "2026-09-28",
     paymentDate: "2026-09-28",
     value: -450.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal"
   },
@@ -215,7 +215,7 @@ export const mockData = [
     dueDate: "2026-10-05",
     paymentDate: "2026-10-05",
     value: 6500.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -228,7 +228,7 @@ export const mockData = [
     dueDate: "2026-10-10",
     paymentDate: "2026-10-10",
     value: -1800.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -241,7 +241,7 @@ export const mockData = [
     dueDate: "2026-10-10",
     paymentDate: "2026-10-09",
     value: -420.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -254,7 +254,7 @@ export const mockData = [
     dueDate: "2026-10-12",
     paymentDate: "2026-10-12",
     value: -108.50,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -267,7 +267,7 @@ export const mockData = [
     dueDate: "2026-10-13",
     paymentDate: "2026-10-13",
     value: -198.70,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -280,7 +280,7 @@ export const mockData = [
     dueDate: "2026-10-14",
     paymentDate: "2026-10-14",
     value: 2400.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal"
   },
@@ -292,7 +292,7 @@ export const mockData = [
     dueDate: "2026-10-15",
     paymentDate: "2026-10-15",
     value: -385.60,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -304,7 +304,7 @@ export const mockData = [
     dueDate: "2026-10-16",
     paymentDate: "2026-10-16",
     value: -65.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -317,7 +317,7 @@ export const mockData = [
     dueDate: "2026-10-18",
     paymentDate: "2026-10-18",
     value: -349.90,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     installment: {
       current: 2,
@@ -334,7 +334,7 @@ export const mockData = [
     dueDate: "2026-10-19",
     paymentDate: "2026-10-19",
     value: -124.90,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -347,7 +347,7 @@ export const mockData = [
     dueDate: "2026-10-20",
     paymentDate: "2026-10-20",
     value: -99.90,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -360,7 +360,7 @@ export const mockData = [
     dueDate: "2026-10-21",
     paymentDate: "2026-10-21",
     value: -310.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -372,7 +372,7 @@ export const mockData = [
     dueDate: "2026-10-22",
     paymentDate: "2026-10-22",
     value: -349.90,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     installment: {
       current: 3,
@@ -389,7 +389,7 @@ export const mockData = [
     dueDate: "2026-10-23",
     paymentDate: "2026-10-23",
     value: -520.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -402,7 +402,7 @@ export const mockData = [
     dueDate: "2026-10-25",
     paymentDate: "2026-10-25",
     value: -185.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -419,7 +419,7 @@ export const mockData = [
     dueDate: "2026-11-05",
     paymentDate: "2026-11-05",
     value: 6500.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -432,7 +432,7 @@ export const mockData = [
     dueDate: "2026-11-10",
     paymentDate: "2026-11-10",
     value: -1800.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -445,7 +445,7 @@ export const mockData = [
     dueDate: "2026-11-10",
     paymentDate: "2026-11-10",
     value: -420.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -458,7 +458,7 @@ export const mockData = [
     dueDate: "2026-11-12",
     paymentDate: "2026-11-12",
     value: -225.40,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -471,7 +471,7 @@ export const mockData = [
     dueDate: "2026-11-13",
     paymentDate: "2026-11-13",
     value: 1750.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal"
   },
@@ -483,7 +483,7 @@ export const mockData = [
     dueDate: "2026-11-15",
     paymentDate: "2026-11-15",
     value: -580.35,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -495,7 +495,7 @@ export const mockData = [
     dueDate: "2026-11-16",
     paymentDate: "2026-11-16",
     value: -119.90,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -508,7 +508,7 @@ export const mockData = [
     dueDate: "2026-11-19",
     paymentDate: "2026-11-19",
     value: -124.90,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -521,7 +521,7 @@ export const mockData = [
     dueDate: "2026-11-20",
     paymentDate: "2026-11-20",
     value: -99.90,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -534,7 +534,7 @@ export const mockData = [
     dueDate: "2026-11-23",
     paymentDate: "2026-11-23",
     value: -520.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -547,7 +547,7 @@ export const mockData = [
     dueDate: "2026-11-25",
     paymentDate: "2026-11-25",
     value: 235.80,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta investimentos"
   },
@@ -559,7 +559,7 @@ export const mockData = [
     dueDate: "2026-11-26",
     paymentDate: "2026-11-26",
     value: -295.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -571,7 +571,7 @@ export const mockData = [
     dueDate: "2026-11-28",
     paymentDate: "2026-11-28",
     value: -165.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -583,7 +583,7 @@ export const mockData = [
     dueDate: "2026-11-29",
     paymentDate: "2026-11-29",
     value: -145.90,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -595,7 +595,7 @@ export const mockData = [
     dueDate: "2026-11-30",
     paymentDate: "2026-11-30",
     value: 750.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal"
   },
@@ -612,7 +612,7 @@ export const mockData = [
     dueDate: "2026-12-05",
     paymentDate: "2026-12-05",
     value: 6500.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -625,7 +625,7 @@ export const mockData = [
     dueDate: "2026-12-10",
     paymentDate: "2026-12-10",
     value: 3250.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal"
   },
@@ -637,7 +637,7 @@ export const mockData = [
     dueDate: "2026-12-10",
     paymentDate: "2026-12-10",
     value: -1800.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -650,7 +650,7 @@ export const mockData = [
     dueDate: "2026-12-10",
     paymentDate: "2026-12-10",
     value: -420.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -663,7 +663,7 @@ export const mockData = [
     dueDate: "2026-12-15",
     paymentDate: "2026-12-15",
     value: -680.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -675,7 +675,7 @@ export const mockData = [
     dueDate: "2026-12-18",
     paymentDate: "2026-12-18",
     value: -850.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -687,7 +687,7 @@ export const mockData = [
     dueDate: "2026-12-20",
     paymentDate: "2026-12-20",
     value: -950.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -699,7 +699,7 @@ export const mockData = [
     dueDate: "2026-12-19",
     paymentDate: "2026-12-19",
     value: -124.90,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -712,7 +712,7 @@ export const mockData = [
     dueDate: "2026-12-23",
     paymentDate: "2026-12-23",
     value: -520.00,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -725,7 +725,7 @@ export const mockData = [
     dueDate: "2026-12-25",
     paymentDate: "2026-12-25",
     value: 265.40,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta investimentos"
   },
@@ -737,7 +737,7 @@ export const mockData = [
     dueDate: "2026-12-26",
     paymentDate: "2026-12-26",
     value: -245.70,
-    status: "pago",
+    status: "realizado",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -750,7 +750,7 @@ export const mockData = [
     dueDate: "2026-12-27",
     paymentDate: "2026-12-27",
     value: -320.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -762,7 +762,7 @@ export const mockData = [
     dueDate: "2026-12-29",
     paymentDate: "2026-12-29",
     value: -390.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -774,7 +774,7 @@ export const mockData = [
     dueDate: "2026-12-30",
     paymentDate: "2026-12-30",
     value: 1200.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal"
   },
@@ -786,7 +786,7 @@ export const mockData = [
     dueDate: "2026-12-31",
     paymentDate: null,
     value: -189.90,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     account: "Conta principal"
   },
@@ -803,7 +803,7 @@ export const mockData = [
     dueDate: "2027-01-05",
     paymentDate: null,
     value: 6800.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -816,7 +816,7 @@ export const mockData = [
     dueDate: "2027-01-10",
     paymentDate: null,
     value: -1800.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -829,7 +829,7 @@ export const mockData = [
     dueDate: "2027-01-10",
     paymentDate: null,
     value: -420.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -842,7 +842,7 @@ export const mockData = [
     dueDate: "2027-01-12",
     paymentDate: null,
     value: -280.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     installment: {
       current: 1,
@@ -859,7 +859,7 @@ export const mockData = [
     dueDate: "2027-01-13",
     paymentDate: null,
     value: -210.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -872,7 +872,7 @@ export const mockData = [
     dueDate: "2027-01-15",
     paymentDate: null,
     value: -620.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -884,7 +884,7 @@ export const mockData = [
     dueDate: "2027-01-16",
     paymentDate: null,
     value: -65.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -897,7 +897,7 @@ export const mockData = [
     dueDate: "2027-01-19",
     paymentDate: null,
     value: -124.90,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -910,7 +910,7 @@ export const mockData = [
     dueDate: "2027-01-20",
     paymentDate: null,
     value: -99.90,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -923,7 +923,7 @@ export const mockData = [
     dueDate: "2027-01-22",
     paymentDate: null,
     value: -280.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     installment: {
       current: 2,
@@ -940,7 +940,7 @@ export const mockData = [
     dueDate: "2027-01-23",
     paymentDate: null,
     value: -540.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -953,7 +953,7 @@ export const mockData = [
     dueDate: "2027-01-25",
     paymentDate: null,
     value: 290.50,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     account: "Conta investimentos"
   },
@@ -965,7 +965,7 @@ export const mockData = [
     dueDate: "2027-01-26",
     paymentDate: null,
     value: -310.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -977,7 +977,7 @@ export const mockData = [
     dueDate: "2027-01-27",
     paymentDate: null,
     value: -280.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     account: "Conta principal"
   },
@@ -989,7 +989,7 @@ export const mockData = [
     dueDate: "2027-01-30",
     paymentDate: null,
     value: 1950.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     account: "Conta principal"
   },
@@ -1006,7 +1006,7 @@ export const mockData = [
     dueDate: "2027-02-05",
     paymentDate: null,
     value: 6800.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -1019,7 +1019,7 @@ export const mockData = [
     dueDate: "2027-02-10",
     paymentDate: null,
     value: -1800.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -1032,7 +1032,7 @@ export const mockData = [
     dueDate: "2027-02-10",
     paymentDate: null,
     value: -420.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -1045,7 +1045,7 @@ export const mockData = [
     dueDate: "2027-02-12",
     paymentDate: null,
     value: -280.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     installment: {
       current: 3,
@@ -1062,7 +1062,7 @@ export const mockData = [
     dueDate: "2027-02-15",
     paymentDate: null,
     value: -590.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -1074,7 +1074,7 @@ export const mockData = [
     dueDate: "2027-02-16",
     paymentDate: null,
     value: -119.90,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -1087,7 +1087,7 @@ export const mockData = [
     dueDate: "2027-02-19",
     paymentDate: null,
     value: -124.90,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -1100,7 +1100,7 @@ export const mockData = [
     dueDate: "2027-02-20",
     paymentDate: null,
     value: -99.90,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Cartão Nubank"
@@ -1113,7 +1113,7 @@ export const mockData = [
     dueDate: "2027-02-23",
     paymentDate: null,
     value: -540.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "monthly",
     account: "Conta principal"
@@ -1126,7 +1126,7 @@ export const mockData = [
     dueDate: "2027-02-25",
     paymentDate: null,
     value: 310.80,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     account: "Conta investimentos"
   },
@@ -1138,7 +1138,7 @@ export const mockData = [
     dueDate: "2027-02-26",
     paymentDate: null,
     value: -280.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     installment: {
       current: 4,
@@ -1215,7 +1215,7 @@ export const mockData = [
     dueDate: "2026-10-08",
     paymentDate: "2026-10-08",
     value: 650.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal"
   },
@@ -1227,7 +1227,7 @@ export const mockData = [
     dueDate: "2026-10-09",
     paymentDate: "2026-10-09",
     value: -1250.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     installment: {
       current: 1,
@@ -1244,7 +1244,7 @@ export const mockData = [
     dueDate: "2026-11-09",
     paymentDate: null,
     value: -1250.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     installment: {
       current: 2,
@@ -1261,7 +1261,7 @@ export const mockData = [
     dueDate: "2026-12-09",
     paymentDate: null,
     value: -1250.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     installment: {
       current: 3,
@@ -1278,7 +1278,7 @@ export const mockData = [
     dueDate: "2027-01-09",
     paymentDate: null,
     value: -1250.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     installment: {
       current: 4,
@@ -1295,7 +1295,7 @@ export const mockData = [
     dueDate: "2027-02-09",
     paymentDate: null,
     value: -1250.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     installment: {
       current: 5,
@@ -1312,7 +1312,7 @@ export const mockData = [
     dueDate: "2026-10-30",
     paymentDate: "2026-10-30",
     value: -299.90,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Cartão Nubank"
   },
@@ -1324,7 +1324,7 @@ export const mockData = [
     dueDate: "2026-11-30",
     paymentDate: null,
     value: -249.90,
-    status: "a-pagar",
+    status: "pendente",
     recurring: true,
     recurrence: "yearly",
     account: "Cartão Nubank"
@@ -1337,7 +1337,7 @@ export const mockData = [
     dueDate: "2026-11-18",
     paymentDate: "2026-11-18",
     value: -180.00,
-    status: "pago",
+    status: "realizado",
     recurring: false,
     account: "Conta principal"
   },
@@ -1349,7 +1349,7 @@ export const mockData = [
     dueDate: "2026-11-25",
     paymentDate: null,
     value: 3200.00,
-    status: "a-pagar",
+    status: "pendente",
     recurring: false,
     account: "Conta principal",
     notes: "Pagamento aguardando aprovação do cliente"
@@ -1409,6 +1409,6 @@ export const typeList = [
 ];
 
 export const statusList = [
-  { "id": 1, "slug": "a-pagar", "name": "A pagar" },
-  { "id": 2, "slug": "pago", "name": "Pago" },
+  { "id": 1, "slug": "pendente", "name": "Pendente" },
+  { "id": 2, "slug": "realizado", "name": "Realizado" },
 ];
