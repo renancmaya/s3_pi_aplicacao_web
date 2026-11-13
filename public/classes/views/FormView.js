@@ -1,6 +1,9 @@
 export default class FormView {
     constructor () {
+        this.formModal = document.getElementById('form-modal');
+        this.closeBtn = document.getElementById('close-form')
         this.form = document.getElementById('form');
+        this.formHeading = document.getElementById('form-heading');
         this.idField = document.getElementById('id');
         this.statusField = document.getElementById('status');
         this.descriptionField = document.getElementById('description');
@@ -15,7 +18,8 @@ export default class FormView {
         this.onUpdate = null;
 
         this.form.addEventListener('submit', (event) => this.submit(event))
-        this.clearBtn.addEventListener('click', (event) => this.clear(event))
+        //this.clearBtn.addEventListener('click', (event) => this.clear(event))
+        this.clearBtn.addEventListener('click', (event) => this.close(event))
     }
 
     populateSelect (element, list) {
@@ -62,6 +66,7 @@ export default class FormView {
 
     // refatorar para receber objeto Item
     loadUpdate (item) {
+        this.formModal.classList.add('show')
         this.idField.value = item.id;
         this.statusField.value = item.status;
         this.descriptionField.value = item.description;
@@ -69,16 +74,29 @@ export default class FormView {
         this.categoryField.value = item.category;
         this.dueDateField.value = item.dueDate;
         this.valueField.value = item.value;
-        this.clearBtn.classList.add('show')
+        /*this.clearBtn.classList.add('show')*/
         this.submitBtn.innerHTML = 'Atualizar registro'
     }
 
-    clear () {
+    /*clear () {
         this.form.reset() 
         this.clearBtn.classList.remove("show")
         this.idField.removeAttribute("value")
         this.submitBtn.innerHTML = "Adicionar registro"
         console.log("executou o reset em FormView")
+    }*/
+
+    close () {
+        this.form.reset() 
+        this.formModal.classList.remove("show")
+        this.idField.removeAttribute("value")
+        this.submitBtn.innerHTML = "Adicionar registro"
+    }
+
+    loadForm (type, term) {
+        this.formModal.classList.add('show')
+        this.typeField.value = type
+        this.formHeading.textContent = `Adicionar ${term}`
     }
 
 }

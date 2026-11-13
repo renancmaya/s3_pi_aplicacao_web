@@ -108,6 +108,15 @@ select:disabled {
 
 /* Formulários */
 
+#form-modal {
+    display: none;
+}
+
+#form-modal.show {
+    display: block;
+    z-index: 10;
+}
+
 .form {
     width: 100%;
 }

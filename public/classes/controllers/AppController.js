@@ -6,9 +6,10 @@ import { categoryList } from "../../mockData.js";
 
 export default class AppController {
 
-    constructor (repository, form, table, filterForm, filterService, sortService, calculator) {
+    constructor (repository, toolbar, form, table, filterForm, filterService, sortService, calculator) {
         // Conexões
         this.repository = repository;
+        this.toolbar = toolbar;
         this.form = form;
         this.table = table;
         this.filterForm = filterForm;
@@ -16,6 +17,7 @@ export default class AppController {
         this.sortService = sortService
         this.calculator = calculator
         this.table.onLoadUpdate = (id) => this.handleLoadUpdate(id)
+        this.toolbar.onLoadForm = (type) => this.handleLoadForm(type)
         this.form.onSave = (itemData) => this.handleSave(itemData) 
         this.form.onUpdate = (id) => this.handleUpdate(id)
         this.table.onDelete = (id) => this.handleDelete(id)
@@ -53,6 +55,12 @@ export default class AppController {
         this.table.setupDictionaries(config)
 
         this.refreshTable()
+    }
+
+    handleLoadForm (type) {
+        console.log('Chegou no controller como: ' + type)
+        const term = this.table.typesDictionary[type]
+        this.form.loadForm(type, term)
     }
 
     handleLoadUpdate (id) {
