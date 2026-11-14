@@ -74,17 +74,8 @@ export default class FormView {
         this.categoryField.value = item.category;
         this.dueDateField.value = item.dueDate;
         this.valueField.value = item.value;
-        /*this.clearBtn.classList.add('show')*/
         this.submitBtn.innerHTML = 'Atualizar registro'
     }
-
-    /*clear () {
-        this.form.reset() 
-        this.clearBtn.classList.remove("show")
-        this.idField.removeAttribute("value")
-        this.submitBtn.innerHTML = "Adicionar registro"
-        console.log("executou o reset em FormView")
-    }*/
 
     close () {
         this.form.reset() 

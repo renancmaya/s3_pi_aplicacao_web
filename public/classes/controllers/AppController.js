@@ -6,9 +6,10 @@ import { categoryList } from "../../mockData.js";
 
 export default class AppController {
 
-    constructor (repository, toolbar, form, table, filterForm, filterService, sortService, calculator) {
+    constructor (repository, settings, toolbar, form, table, filterForm, filterService, sortService, calculator) {
         // Conexões
         this.repository = repository;
+        this.settings = settings;
         this.toolbar = toolbar;
         this.form = form;
         this.table = table;
@@ -24,23 +25,6 @@ export default class AppController {
         this.table.onDuplicate = (id) => this.handleDuplicate(id)
         this.filterForm.onFilter = (filters) => this.handleFilters(filters)
         this.table.onSort = (column) => this.handleSort(column)
-
-        // Outros atributos
-        this.currentFilters = {
-            status: null,
-            description: null,
-            type: null,
-            category: null,
-            dueDateMin: null,
-            dueDateMax: null,
-            valueMin: null,
-            valueMax: null,
-        }
-
-        this.currentSort = {
-            column: null,
-            order: null,
-        }
     }
 
     init () {
@@ -54,6 +38,11 @@ export default class AppController {
         this.filterForm.setupOptions(config)
         this.table.setupDictionaries(config)
 
+        const {filters, sort} = this.settings.get();
+        this.currentFilters = filters;
+        this.currentSort = sort;
+        this.filterForm.setState(this.currentFilters)
+        this.table.setSortBtn(this.currentSort)
         this.refreshTable()
     }
 
@@ -92,10 +81,12 @@ export default class AppController {
 
     handleFilters (filters) {
         this.currentFilters = filters
+        this.settings.save(this.currentFilters, this.currentSort)
         this.refreshTable()
     }
     
     handleSort (column) {
+        console.log(this.currentSort)
         if (this.currentSort.column === column && this.currentSort.order === 'asc') {
             this.currentSort.order = 'desc'
         } else if (this.currentSort.column === column && this.currentSort.order === 'desc') {
@@ -106,7 +97,8 @@ export default class AppController {
             this.currentSort.order = 'asc'
         }
         
-        this.table.updateSortBtn(this.currentSort.column, this.currentSort.order)
+        this.settings.save(this.currentFilters, this.currentSort)
+        this.table.setSortBtn(this.currentSort)
         this.refreshTable()
     }
 

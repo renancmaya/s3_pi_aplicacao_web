@@ -127,14 +127,14 @@ export default class TableView {
 
     }
 
-    updateSortBtn (column, order) {
+    setSortBtn (sort) {
         const columns = this.tableHead.querySelectorAll('[aria-sort]')
         columns.forEach(item => item.setAttribute('aria-sort', 'none'))
-        if (!column || !order) {
+        if (!sort.column || !sort.order) {
             return
         }
-        const sortBtn = this.tableHead.querySelector(`[data-sort="${column}"]`)
-        sortBtn.closest('th').setAttribute('aria-sort', order === 'asc' ? 'ascending' : 'descending')
+        const sortBtn = this.tableHead.querySelector(`[data-sort="${sort.column}"]`)
+        sortBtn.closest('th').setAttribute('aria-sort', sort.order === 'asc' ? 'ascending' : 'descending')
     }
 
     displayTotal (total) {
