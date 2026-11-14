@@ -109,12 +109,16 @@ select:disabled {
 /* Formulários */
 
 #form-modal {
-    display: none;
+    /*display: none;*/
 }
 
 #form-modal.show {
-    display: block;
-    z-index: 10;
+    /*display: block;
+    z-index: 10;*/
+}
+
+#form-modal::backdrop {
+    background-color: hsl(0 0 0 / .4);
 }
 
 .form {
@@ -254,8 +258,8 @@ select:disabled {
     top: -53px;
     right: 0;
 
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    aspect-ratio: 1;
     padding: 3px;
 
     fill: var(--color-text-muted);

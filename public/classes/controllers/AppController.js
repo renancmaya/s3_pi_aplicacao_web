@@ -47,7 +47,6 @@ export default class AppController {
     }
 
     handleLoadForm (type) {
-        console.log('Chegou no controller como: ' + type)
         const term = this.table.typesDictionary[type]
         this.form.loadForm(type, term)
     }
@@ -66,7 +65,7 @@ export default class AppController {
         }
         console.log(item)
         this.refreshTable()
-        this.form.clear()
+        this.form.close()
     }
 
     handleDelete (id) {

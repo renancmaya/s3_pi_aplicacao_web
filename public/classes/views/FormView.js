@@ -64,9 +64,16 @@ export default class FormView {
         }
     }
 
-    // refatorar para receber objeto Item
+    // mostrar o modal, atualizar o type e muda o título ao clicar no toolbar
+    loadForm (type, term) {
+        this.formModal.showModal()
+        this.typeField.value = type
+        this.formHeading.textContent = `Adicionar ${term}`
+    }
+    
+    // mostrar o modal, preencher os campos e muda o título ao clicar no editar da table
     loadUpdate (item) {
-        this.formModal.classList.add('show')
+        this.formModal.showModal()
         this.idField.value = item.id;
         this.statusField.value = item.status;
         this.descriptionField.value = item.description;
@@ -79,15 +86,8 @@ export default class FormView {
 
     close () {
         this.form.reset() 
-        this.formModal.classList.remove("show")
+        this.formModal.close()
         this.idField.removeAttribute("value")
         this.submitBtn.innerHTML = "Adicionar registro"
     }
-
-    loadForm (type, term) {
-        this.formModal.classList.add('show')
-        this.typeField.value = type
-        this.formHeading.textContent = `Adicionar ${term}`
-    }
-
 }
