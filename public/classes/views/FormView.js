@@ -1,7 +1,7 @@
 export default class FormView {
     constructor () {
         this.formModal = document.getElementById('form-modal');
-        this.closeBtn = document.getElementById('close-form')
+        this.closeBtn = document.getElementById('close')
         this.form = document.getElementById('form');
         this.formHeading = document.getElementById('form-heading');
         this.idField = document.getElementById('id');
@@ -12,14 +12,12 @@ export default class FormView {
         this.dueDateField = document.getElementById('due-date');
         this.valueField = document.getElementById('value');
         this.submitBtn = document.getElementById('submit');
-        this.clearBtn = document.getElementById('clear');
 
         this.onSave = null;
         this.onUpdate = null;
 
         this.form.addEventListener('submit', (event) => this.submit(event))
-        //this.clearBtn.addEventListener('click', (event) => this.clear(event))
-        this.clearBtn.addEventListener('click', (event) => this.close(event))
+        this.closeBtn.addEventListener('click', (event) => this.close(event))
     }
 
     populateSelect (element, list) {
@@ -64,15 +62,14 @@ export default class FormView {
         }
     }
 
-    // mostrar o modal, atualizar o type e muda o título ao clicar no toolbar
-    loadForm (type, term) {
+    loadFormAdd (type, term) {
         this.formModal.showModal()
         this.typeField.value = type
         this.formHeading.textContent = `Adicionar ${term}`
+        this.submitBtn.innerHTML = 'Salvar'
     }
     
-    // mostrar o modal, preencher os campos e muda o título ao clicar no editar da table
-    loadUpdate (item) {
+    loadFormUpdate (item) {
         this.formModal.showModal()
         this.idField.value = item.id;
         this.statusField.value = item.status;
@@ -81,13 +78,17 @@ export default class FormView {
         this.categoryField.value = item.category;
         this.dueDateField.value = item.dueDate;
         this.valueField.value = item.value;
-        this.submitBtn.innerHTML = 'Atualizar registro'
+        this.formHeading.textContent = `Atualizar registro`
+        this.submitBtn.innerHTML = 'Salvar'
     }
 
-    close () {
+    clear () {
         this.form.reset() 
-        this.formModal.close()
         this.idField.removeAttribute("value")
-        this.submitBtn.innerHTML = "Adicionar registro"
+    }
+    
+    close () {
+        this.clear()
+        this.formModal.close()
     }
 }

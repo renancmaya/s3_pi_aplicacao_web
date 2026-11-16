@@ -6,9 +6,10 @@ import { categoryList } from "../../mockData.js";
 
 export default class AppController {
 
-    constructor (repository, settings, toolbar, form, table, filterForm, filterService, sortService, calculator) {
-        // Conexões
-        this.repository = repository;
+    constructor (itemRepository, categoryRepository, settings, toolbar, form, table, filterForm, filterService, sortService, calculator) {
+        // Definições
+        this.itemRepository = itemRepository;
+        this.categoryRepository = categoryRepository;
         this.settings = settings;
         this.toolbar = toolbar;
         this.form = form;
@@ -17,8 +18,9 @@ export default class AppController {
         this.filterService = filterService;
         this.sortService = sortService
         this.calculator = calculator
-        this.table.onLoadUpdate = (id) => this.handleLoadUpdate(id)
-        this.toolbar.onLoadForm = (type) => this.handleLoadForm(type)
+        // Conexões
+        this.table.onLoadUpdate = (id) => this.handleLoadFormUpdate(id)
+        this.toolbar.onLoadForm = (type) => this.handleLoadFormAdd(type)
         this.form.onSave = (itemData) => this.handleSave(itemData) 
         this.form.onUpdate = (id) => this.handleUpdate(id)
         this.table.onDelete = (id) => this.handleDelete(id)
@@ -31,37 +33,37 @@ export default class AppController {
         const config = {
             statuses: statusList,
             types: typeList,
-            categories: categoryList
+            categories: this.categoryRepository.getAll() //categoryList
         }
-
+        
         this.form.setupOptions(config)
         this.filterForm.setupOptions(config)
         this.table.setupDictionaries(config)
-
+        
         const {filters, sort} = this.settings.get();
         this.currentFilters = filters;
         this.currentSort = sort;
         this.filterForm.setState(this.currentFilters)
         this.table.setSortBtn(this.currentSort)
-        this.refreshTable()
+        this.refreshTable()        
     }
 
-    handleLoadForm (type) {
+    handleLoadFormAdd (type) {
         const term = this.table.typesDictionary[type]
-        this.form.loadForm(type, term)
+        this.form.loadFormAdd(type, term)
     }
 
-    handleLoadUpdate (id) {
-        const item = this.repository.getById(id)
-        this.form.loadUpdate(item)
+    handleLoadFormUpdate (id) {
+        const item = this.itemRepository.getById(id)
+        this.form.loadFormUpdate(item)
     }
 
     handleSave (itemData) {
         const item = new Item(itemData)
         if (item.id) {
-            this.repository.update(item)
+            this.itemRepository.update(item)
         } else {
-            this.repository.add(item)
+            this.itemRepository.add(item)
         }
         console.log(item)
         this.refreshTable()
@@ -69,12 +71,12 @@ export default class AppController {
     }
 
     handleDelete (id) {
-        this.repository.delete(id)
+        this.itemRepository.delete(id)
         this.refreshTable()
     }
 
     handleDuplicate (id) {
-        this.repository.duplicate(id)
+        this.itemRepository.duplicate(id)
         this.refreshTable()
     }
 
@@ -102,7 +104,7 @@ export default class AppController {
     }
 
     refreshTable() {
-        const items = this.repository.getAll();
+        const items = this.itemRepository.getAll();
         const filteredItems = this.filterService.filterItems(items, this.currentFilters)
         const sortedItems = this.sortService.sort(filteredItems, this.currentSort)
         const total = FinancialCalculator.sumAll(filteredItems)

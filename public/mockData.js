@@ -1353,9 +1353,18 @@ export const mockData = [
     recurring: false,
     account: "Conta principal",
     notes: "Pagamento aguardando aprovação do cliente"
-  }
+}
 ];
 
+export const statusList = [
+    { "id": 1, "slug": "pendente", "name": "Pendente" },
+    { "id": 2, "slug": "realizado", "name": "Realizado" },
+];
+
+export const typeList = [
+  { id: 1, slug: "entrada", name: "Entrada" },
+  { id: 2, slug: "saida", name: "Saída" }
+];
 
 export const categoryList = [
   { id: 1, type: "saida", slug: "academia", name: "Academia" },
@@ -1388,8 +1397,6 @@ export const categoryList = [
   { id: 28, type: "saida", slug: "supermercado", name: "Supermercado" },
   { id: 29, type: "saida", slug: "tarifas", name: "Tarifas" },
   { id: 30, type: "saida", slug: "veiculo", name: "Veículo" },
-
-  // Categorias adicionais
   { id: 31, type: "saida", slug: "educacao", name: "Educação" },
   { id: 32, type: "saida", slug: "transporte", name: "Transporte" },
   { id: 33, type: "saida", slug: "vestuario", name: "Vestuário" },
@@ -1401,14 +1408,4 @@ export const categoryList = [
   { id: 39, type: "entrada", slug: "vendas", name: "Vendas" },
   { id: 40, type: "entrada", slug: "outros", name: "Outros recebimentos" },
   { id: 41, type: "saida", slug: "outros", name: "Outras despesas" }
-];
-
-export const typeList = [
-  { id: 1, slug: "entrada", name: "Entrada" },
-  { id: 2, slug: "saida", name: "Saída" }
-];
-
-export const statusList = [
-  { "id": 1, "slug": "pendente", "name": "Pendente" },
-  { "id": 2, "slug": "realizado", "name": "Realizado" },
-];
+]

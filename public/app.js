@@ -1,5 +1,5 @@
-import Item from './classes/models/Item.js'
 import ItemRepository from './classes/models/ItemRepository.js'
+import CategoryRepository from './classes/models/CategoryRepository.js'
 import SettingsService from './classes/models/SettingsService.js'
 import ToolbarView from './classes/views/ToolbarView.js'
 import FormView from './classes/views/FormView.js'
@@ -9,7 +9,8 @@ import FilterService from './classes/models/FilterService.js'
 import SortService from './classes/models/SortService.js'
 import AppController from './classes/controllers/AppController.js'
 
-const repository = new ItemRepository();
+const itemRepository = new ItemRepository();
+const categoryRepository = new CategoryRepository();
 const settings = new SettingsService();
 const toolbar = new ToolbarView();
 const form = new FormView();
@@ -17,5 +18,6 @@ const table = new TableView();
 const filterForm = new FilterView();
 const filterService = new FilterService();
 const sortService = new SortService();
-const controller = new AppController(repository, settings, toolbar, form, table, filterForm, filterService, sortService);
+const controller = new AppController(itemRepository, categoryRepository, settings, toolbar, form, table, filterForm, filterService, sortService);
+
 controller.init();
