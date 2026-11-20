@@ -19,6 +19,11 @@ export default class CategoryRepository {
         
     }
 
+    getByType (type) {
+        const categories = this.getAll()
+        return categories.filter((cat) => cat.type === type)
+    }
+
     Add (object) {
 
     }

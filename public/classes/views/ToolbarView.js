@@ -6,13 +6,13 @@ export default class ToolbarView {
 
         this.toolbar.addEventListener('click', (event) => this.manageToolbarClicks(event))
 
-        this.onLoadForm = null
+        this.onLoadFormAdd = null
     }
 
     manageToolbarClicks (event) {
         if (event.target.id === this.addIncomeBtn.id || event.target.id === this.addExpenseBtn.id) {
-            if (this.onLoadForm) {
-                this.onLoadForm(event.target.dataset.type)
+            if (this.onLoadFormAdd) {
+                this.onLoadFormAdd(event.target.dataset.type)
             }
         }
     }

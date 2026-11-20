@@ -7,7 +7,7 @@ export default class TableView {
         this.tableHead.addEventListener('click', (event) => this.manageHeadClicks(event))
         this.tableBody.addEventListener('click', (event) => this.manageTableClicks(event))
 
-        this.onLoadUpdate = null;
+        this.onLoadFormUpdate = null;
         this.onDuplicate = null;
         this.onDelete = null;
         this.onSort = null;
@@ -52,8 +52,8 @@ export default class TableView {
             
         } else if (event.target.classList.contains('table__action--edit')) {
             const id = event.target.dataset.id
-            if (this.onLoadUpdate) {
-                this.onLoadUpdate(id)
+            if (this.onLoadFormUpdate) {
+                this.onLoadFormUpdate(id)
             }
             
         } else if (event.target.classList.contains('table__action--duplicate')) {

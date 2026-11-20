@@ -20,43 +20,42 @@ export default class FormView {
         this.closeBtn.addEventListener('click', (event) => this.close(event))
     }
 
-    populateSelect (element, list) {
-
-        while (element.children.length > 1) {
-            element.lastElementChild.remove();
-        }
-        
+    populateStatus (list) {
         const fragment = document.createDocumentFragment();
-
+        const placeholder = document.createElement('option')
+        placeholder.textContent = "Selecionar..."
+        fragment.append(placeholder)
         for (const item of list) {
             const option = document.createElement('option')
             option.value = item.slug
             option.textContent = item.name
             fragment.append(option)
         }
-
-        element.append(fragment)
+        
+        this.statusField.append(fragment)
     }
 
     populateCategories (categories) {
+        this.categoryField.innerHTML = ""
         const fragment = document.createDocumentFragment()
-
+        const placeholder = document.createElement('option')
+        placeholder.textContent = "Selecionar..."
+        fragment.append(placeholder)
         for (const category of categories) {
             const option = document.createElement('option')
             option.value = category.id
             option.textContent = category.name
             fragment.append(option)
         }
-
         
         this.categoryField.append(fragment)
     }
 
-    setupOptions({statuses, types, categories}) {
+    /*setupOptions({statuses, types, categories}) {
         this.populateSelect(this.typeField, types)
-        this.populateSelect(this.statusField, statuses)
+        this.populateStatus(this.statusField, statuses)
         this.populateCategories(categories)
-    }
+    }*/
 
     submit (event) {
         event.preventDefault()
@@ -76,15 +75,18 @@ export default class FormView {
         }
     }
 
-    loadFormAdd (type, term) {
+    loadFormAdd (type, term, categories) {
+        this.populateCategories(categories)
         this.formModal.showModal()
         this.typeField.value = type
         this.formHeading.textContent = `Adicionar ${term}`
         this.submitBtn.innerHTML = 'Salvar'
     }
     
-    loadFormUpdate (item) {
-        this.formModal.showModal()
+    // Trazer criação de option para cá
+    loadFormUpdate (item, categories) {
+        this.populateCategories(categories)
+        this.formModal.showModal(this.statusField, statuses)
         this.idField.value = item.id;
         this.statusField.value = item.status;
         this.descriptionField.value = item.description;

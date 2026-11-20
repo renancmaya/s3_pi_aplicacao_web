@@ -20,13 +20,15 @@ export default class AppController {
         this.calculator = calculator
         // Conexões
         this.table.onLoadUpdate = (id) => this.handleLoadFormUpdate(id)
-        this.toolbar.onLoadForm = (type) => this.handleLoadFormAdd(type)
+        this.toolbar.onLoadFormAdd = (type) => this.handleLoadFormAdd(type)
         this.form.onSave = (itemData) => this.handleSave(itemData) 
         this.form.onUpdate = (id) => this.handleUpdate(id)
         this.table.onDelete = (id) => this.handleDelete(id)
         this.table.onDuplicate = (id) => this.handleDuplicate(id)
         this.filterForm.onFilter = (filters) => this.handleFilters(filters)
         this.table.onSort = (column) => this.handleSort(column)
+        // Outros atributos
+        this.statusList = statusList
     }
 
     init () {
@@ -36,7 +38,8 @@ export default class AppController {
             categories: this.categoryRepository.getAll()
         }
         
-        this.form.setupOptions(config)
+        //this.form.setupOptions(config)
+        this.form.populateStatus(statusList)
         this.filterForm.setupOptions(config)
         this.table.setupDictionaries(config)
         
@@ -50,12 +53,16 @@ export default class AppController {
 
     handleLoadFormAdd (type) {
         const term = this.table.typesDictionary[type]
-        this.form.loadFormAdd(type, term)
+        const categories = this.categoryRepository.getByType(type)
+        this.form.loadFormAdd(type, term, categories)
     }
-
+    
     handleLoadFormUpdate (id) {
         const item = this.itemRepository.getById(id)
-        this.form.loadFormUpdate(item)
+        const categories = this.categoryRepository.getByType(type)
+        /*const categories = this.categoryRepository.getByType(item.type)
+        console.log(categories)*/
+        this.form.loadFormUpdate(item, categories)
     }
 
     handleSave (itemData) {
