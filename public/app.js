@@ -1,5 +1,6 @@
 import ItemRepository from './classes/models/ItemRepository.js'
 import CategoryRepository from './classes/models/CategoryRepository.js'
+import Mapper from './classes/models/mapper.js'
 import SettingsService from './classes/models/SettingsService.js'
 import ToolbarView from './classes/views/ToolbarView.js'
 import FormView from './classes/views/FormView.js'
@@ -11,6 +12,7 @@ import AppController from './classes/controllers/AppController.js'
 
 const itemRepository = new ItemRepository();
 const categoryRepository = new CategoryRepository();
+const mapper = new Mapper();
 const settings = new SettingsService();
 const toolbar = new ToolbarView();
 const form = new FormView();
@@ -18,6 +20,6 @@ const table = new TableView();
 const filterForm = new FilterView();
 const filterService = new FilterService();
 const sortService = new SortService();
-const controller = new AppController(itemRepository, categoryRepository, settings, toolbar, form, table, filterForm, filterService, sortService);
+const controller = new AppController(itemRepository, categoryRepository, mapper, settings, toolbar, form, table, filterForm, filterService, sortService);
 
 controller.init();

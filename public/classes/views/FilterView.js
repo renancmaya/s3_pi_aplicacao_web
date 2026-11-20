@@ -35,10 +35,24 @@ export default class FilterView {
         element.append(fragment)
     }
 
+    populateCategories (categories) {
+        const fragment = document.createDocumentFragment()
+
+        for (const category of categories) {
+            const option = document.createElement('option')
+            option.value = category.id
+            option.textContent = category.name
+            fragment.append(option)
+        }
+
+        
+        this.categoryInput.append(fragment)
+    }
+
     setupOptions({statuses, types, categories}) {
         this.populateSelect(this.statusInput, statuses)
         this.populateSelect(this.typeInput, types)
-        this.populateSelect(this.categoryInput, categories)
+        this.populateCategories(categories)
     }
 
     setState (filters) {

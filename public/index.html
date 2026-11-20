@@ -28,6 +28,7 @@
 
         <form id="form" class="form form--add add">
             <input type="hidden" id="id">
+            <input type="hidden" id="type" class="form__input form__input--select" required>
 
             <div class="form__input-group">
                 <label for="status" class="form__label">Status</label>
@@ -39,13 +40,6 @@
             <div class="form__input-group">
                 <label for="description" class="form__label">Descrição</label>
                 <input type="text" id="description" class="form__input" required>
-            </div>
-
-            <div class="form__input-group">
-                <label for="type" class="form__label">Tipo</label>
-                <select id="type" class="form__input form__input--select" required>
-                    <option value="">Selecione...</option>
-                </select>
             </div>
 
             <div class="form__input-group">

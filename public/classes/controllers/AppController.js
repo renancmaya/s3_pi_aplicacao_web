@@ -2,14 +2,15 @@ import Item from "../models/Item.js";
 import FinancialCalculator from "../models/FinancialCalculator.js";
 import { typeList } from "../../mockData.js";
 import { statusList } from "../../mockData.js";
-import { categoryList } from "../../mockData.js";
+//import { categoryList } from "../../mockData.js";
 
 export default class AppController {
 
-    constructor (itemRepository, categoryRepository, settings, toolbar, form, table, filterForm, filterService, sortService, calculator) {
+    constructor (itemRepository, categoryRepository, mapper, settings, toolbar, form, table, filterForm, filterService, sortService, calculator) {
         // Definições
         this.itemRepository = itemRepository;
         this.categoryRepository = categoryRepository;
+        this.mapper = mapper;
         this.settings = settings;
         this.toolbar = toolbar;
         this.form = form;
@@ -105,7 +106,11 @@ export default class AppController {
 
     refreshTable() {
         const items = this.itemRepository.getAll();
-        const filteredItems = this.filterService.filterItems(items, this.currentFilters)
+        const categories = this.categoryRepository.getAll();
+        const mappedItems = this.mapper.mapCategories(items, categories)
+        //const categories = this.categoryRepository.getAll();
+        //const mappedItems = this.mapper.mapCategories(items, categories)
+        const filteredItems = this.filterService.filterItems(mappedItems, this.currentFilters)
         const sortedItems = this.sortService.sort(filteredItems, this.currentSort)
         const total = FinancialCalculator.sumAll(filteredItems)
         this.table.displayTotal(total)
