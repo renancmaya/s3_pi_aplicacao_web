@@ -1,12 +1,12 @@
 export default class Item {
-    constructor(itemData) {
-        this.id = itemData.id
-        this.status = itemData.status
-        this.description = itemData.description
-        this.type = itemData.type
-        this.category = itemData.category
-        this.dueDate = itemData.dueDate
-        this.value = this.formatValue (itemData.value)
+    constructor(object) {
+        this.id = object.id
+        this.status = object.status
+        this.description = object.description
+        this.type = object.type
+        this.category = object.category
+        this.dueDate = object.dueDate
+        this.value = this.formatValue (object.value)
     }
 
     formatValue (value) {

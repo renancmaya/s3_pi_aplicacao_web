@@ -38,18 +38,32 @@ export default class FormView {
         element.append(fragment)
     }
 
+    populateCategories (categories) {
+        const fragment = document.createDocumentFragment()
+
+        for (const category of categories) {
+            const option = document.createElement('option')
+            option.value = category.id
+            option.textContent = category.name
+            fragment.append(option)
+        }
+
+        
+        this.categoryField.append(fragment)
+    }
+
     setupOptions({statuses, types, categories}) {
         this.populateSelect(this.typeField, types)
-        this.populateSelect(this.categoryField, categories)
         this.populateSelect(this.statusField, statuses)
+        this.populateCategories(categories)
     }
 
     submit (event) {
         event.preventDefault()
 
         const itemData = {
-            status: this.statusField.value,
             id: parseFloat(this.idField.value),
+            status: this.statusField.value,
             description: this.descriptionField.value,
             type: this.typeField.value,
             category: this.categoryField.value,
