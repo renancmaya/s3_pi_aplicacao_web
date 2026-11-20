@@ -19,7 +19,7 @@ export default class AppController {
         this.sortService = sortService
         this.calculator = calculator
         // Conexões
-        this.table.onLoadUpdate = (id) => this.handleLoadFormUpdate(id)
+        this.table.onLoadFormUpdate = (id) => this.handleLoadFormUpdate(id)
         this.toolbar.onLoadFormAdd = (type) => this.handleLoadFormAdd(type)
         this.form.onSave = (itemData) => this.handleSave(itemData) 
         this.form.onUpdate = (id) => this.handleUpdate(id)
@@ -38,7 +38,6 @@ export default class AppController {
             categories: this.categoryRepository.getAll()
         }
         
-        //this.form.setupOptions(config)
         this.form.populateStatus(statusList)
         this.filterForm.setupOptions(config)
         this.table.setupDictionaries(config)
@@ -59,9 +58,7 @@ export default class AppController {
     
     handleLoadFormUpdate (id) {
         const item = this.itemRepository.getById(id)
-        const categories = this.categoryRepository.getByType(type)
-        /*const categories = this.categoryRepository.getByType(item.type)
-        console.log(categories)*/
+        const categories = this.categoryRepository.getByType(item.type)
         this.form.loadFormUpdate(item, categories)
     }
 

@@ -54,6 +54,7 @@ export default class TableView {
             const id = event.target.dataset.id
             if (this.onLoadFormUpdate) {
                 this.onLoadFormUpdate(id)
+                console.log("Clique funcionou")
             }
             
         } else if (event.target.classList.contains('table__action--duplicate')) {

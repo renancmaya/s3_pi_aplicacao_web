@@ -51,12 +51,6 @@ export default class FormView {
         this.categoryField.append(fragment)
     }
 
-    /*setupOptions({statuses, types, categories}) {
-        this.populateSelect(this.typeField, types)
-        this.populateStatus(this.statusField, statuses)
-        this.populateCategories(categories)
-    }*/
-
     submit (event) {
         event.preventDefault()
 
@@ -83,10 +77,9 @@ export default class FormView {
         this.submitBtn.innerHTML = 'Salvar'
     }
     
-    // Trazer criação de option para cá
     loadFormUpdate (item, categories) {
         this.populateCategories(categories)
-        this.formModal.showModal(this.statusField, statuses)
+        this.formModal.showModal()
         this.idField.value = item.id;
         this.statusField.value = item.status;
         this.descriptionField.value = item.description;
