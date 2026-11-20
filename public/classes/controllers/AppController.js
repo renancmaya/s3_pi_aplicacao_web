@@ -2,7 +2,6 @@ import Item from "../models/Item.js";
 import FinancialCalculator from "../models/FinancialCalculator.js";
 import { typeList } from "../../mockData.js";
 import { statusList } from "../../mockData.js";
-//import { categoryList } from "../../mockData.js";
 
 export default class AppController {
 
@@ -34,7 +33,7 @@ export default class AppController {
         const config = {
             statuses: statusList,
             types: typeList,
-            categories: this.categoryRepository.getAll() //categoryList
+            categories: this.categoryRepository.getAll()
         }
         
         this.form.setupOptions(config)
@@ -66,7 +65,6 @@ export default class AppController {
         } else {
             this.itemRepository.add(item)
         }
-        console.log(item)
         this.refreshTable()
         this.form.close()
     }
@@ -88,7 +86,6 @@ export default class AppController {
     }
     
     handleSort (column) {
-        console.log(this.currentSort)
         if (this.currentSort.column === column && this.currentSort.order === 'asc') {
             this.currentSort.order = 'desc'
         } else if (this.currentSort.column === column && this.currentSort.order === 'desc') {
@@ -108,8 +105,6 @@ export default class AppController {
         const items = this.itemRepository.getAll();
         const categories = this.categoryRepository.getAll();
         const mappedItems = this.mapper.mapCategories(items, categories)
-        //const categories = this.categoryRepository.getAll();
-        //const mappedItems = this.mapper.mapCategories(items, categories)
         const filteredItems = this.filterService.filterItems(mappedItems, this.currentFilters)
         const sortedItems = this.sortService.sort(filteredItems, this.currentSort)
         const total = FinancialCalculator.sumAll(filteredItems)

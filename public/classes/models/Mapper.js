@@ -8,7 +8,6 @@ export default class Mapper {
                const categoryName = categories.find(category => item.category == category.id).name
                item.category = categoryName
             }
-        console.log(items)
         return items
     }
 }
