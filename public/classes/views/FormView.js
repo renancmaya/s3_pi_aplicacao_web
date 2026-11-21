@@ -23,6 +23,7 @@ export default class FormView {
     populateStatus (list) {
         const fragment = document.createDocumentFragment();
         const placeholder = document.createElement('option')
+        placeholder.value = ""
         placeholder.textContent = "Selecionar..."
         fragment.append(placeholder)
         for (const item of list) {
@@ -39,6 +40,7 @@ export default class FormView {
         this.categoryField.innerHTML = ""
         const fragment = document.createDocumentFragment()
         const placeholder = document.createElement('option')
+        placeholder.value = ""
         placeholder.textContent = "Selecionar..."
         fragment.append(placeholder)
         for (const category of categories) {

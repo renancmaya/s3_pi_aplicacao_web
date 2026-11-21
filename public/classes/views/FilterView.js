@@ -17,7 +17,7 @@ export default class FilterView {
         this.clearFilterBtn.addEventListener('click', (event) => this.clearFilters(event))
     }
 
-    populateSelect (element, list) {
+    /*populateSelect (element, list) {
 
         while (element.children.length > 1) {
             element.lastElementChild.remove();
@@ -33,26 +33,61 @@ export default class FilterView {
         }
 
         element.append(fragment)
-    }
+    }*/
 
-    populateCategories (categories) {
-        const fragment = document.createDocumentFragment()
-
-        for (const category of categories) {
+    populateStatus (list) {
+        const fragment = document.createDocumentFragment();
+        const placeholder = document.createElement('option')
+        placeholder.value = ""
+        placeholder.textContent = "Todos"
+        fragment.append(placeholder)
+        for (const item of list) {
             const option = document.createElement('option')
-            option.value = category.id
-            option.textContent = category.name
+            option.value = item.slug
+            option.textContent = item.name
             fragment.append(option)
         }
+        
+        this.statusInput.append(fragment)
+    }
+    
+    populateType (list) {
+        const fragment = document.createDocumentFragment();
+        const placeholder = document.createElement('option')
+        placeholder.value = ""
+        placeholder.textContent = "Todos"
+        fragment.append(placeholder)
+        for (const item of list) {
+            const option = document.createElement('option')
+            option.value = item.slug
+            option.textContent = item.name
+            fragment.append(option)
+        }
+        
+        this.typeInput.append(fragment)
+    }
+    
+    populateCategories (list) {
+        const fragment = document.createDocumentFragment()
+        const placeholder = document.createElement('option')
+        placeholder.value = ""
+        placeholder.textContent = "Todas"
+        fragment.append(placeholder)
 
+        for (const item of list) {
+            const option = document.createElement('option')
+            option.value = item.id
+            option.textContent = item.name
+            fragment.append(option)
+        }
         
         this.categoryInput.append(fragment)
     }
 
-    setupOptions({statuses, types, categories}) {
-        this.populateSelect(this.statusInput, statuses)
-        this.populateSelect(this.typeInput, types)
-        this.populateCategories(categories)
+    setupOptions(statusList, typeList, categoryList) {
+        this.populateStatus(statusList)
+        this.populateType(typeList)
+        this.populateCategories(categoryList)
     }
 
     setState (filters) {

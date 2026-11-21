@@ -29,18 +29,17 @@ export default class AppController {
         this.table.onSort = (column) => this.handleSort(column)
         // Outros atributos
         this.statusList = statusList
+        this.typeList = typeList
+        this.categoryList
     }
 
     init () {
-        const config = {
-            statuses: statusList,
-            types: typeList,
-            categories: this.categoryRepository.getAll()
-        }
+        this.categoryList = this.categoryRepository.getAll()
+        //
         
-        this.form.populateStatus(statusList)
-        this.filterForm.setupOptions(config)
-        this.table.setupDictionaries(config)
+        this.form.populateStatus(this.statusList)
+        this.filterForm.setupOptions(this.statusList, this.typeList, this.categoryList)
+        this.table.setupDictionaries(this.statusList, this.typeList, this.categoryList)
         
         const {filters, sort} = this.settings.get();
         this.currentFilters = filters;

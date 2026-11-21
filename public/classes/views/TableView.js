@@ -18,20 +18,20 @@ export default class TableView {
 
         this.currency = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
     }
-
-    createDictionary(list) {
-        return list.reduce((acc, item) => {
-            acc[item.slug] = item.name;
-            return acc;
-        }, {});
+    
+    setupDictionaries (statusList, typeList, categoryList) {
+        this.statusDictionary = this.createDictionary(statusList)
+        this.typesDictionary = this.createDictionary(typeList)
+        this.categoriesDictionary = this.createDictionary(categoryList)
     }
-
-    setupDictionaries ({statuses, types, categories}) {
-        this.statusDictionary = this.createDictionary(statuses)
-        this.typesDictionary = this.createDictionary(types)
-        this.categoriesDictionary = this.createDictionary(categories)
-    }
-
+    
+        createDictionary(list) {
+            return list.reduce((acc, item) => {
+                acc[item.slug] = item.name;
+                return acc;
+            }, {});
+        }
+    
     manageHeadClicks (event) {
         if (event.target.dataset.sort) {
             const column = event.target.dataset.sort
