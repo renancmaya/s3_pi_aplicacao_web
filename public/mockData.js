@@ -1356,7 +1356,7 @@ export const mockData = [
 }
 ];
 
-export const statusList = [
+/*export const statusList = [
     { "id": 1, "slug": "pendente", "name": "Pendente" },
     { "id": 2, "slug": "realizado", "name": "Realizado" },
 ];
@@ -1364,7 +1364,17 @@ export const statusList = [
 export const typeList = [
   { id: 1, slug: "entrada", name: "Entrada" },
   { id: 2, slug: "saida", name: "Saída" }
-];
+];*/
+
+export const statusDict = {
+  pendente: "Pendente",
+  realizado: "Realizado",
+};
+
+export const typeDict = {
+  entrada: "Entrada",
+  saida: "Saída",
+};
 
 export const categoryList = [
   { id: 1, type: "saida", slug: "academia", name: "Academia" },

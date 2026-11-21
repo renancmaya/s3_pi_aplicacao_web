@@ -35,36 +35,34 @@ export default class FilterView {
         element.append(fragment)
     }*/
 
-    populateStatus (list) {
+    populateStatus (dict) {
         const fragment = document.createDocumentFragment();
-        const placeholder = document.createElement('option')
-        placeholder.value = ""
-        placeholder.textContent = "Todos"
-        fragment.append(placeholder)
-        for (const item of list) {
-            const option = document.createElement('option')
-            option.value = item.slug
-            option.textContent = item.name
-            fragment.append(option)
-        }
-        
-        this.statusInput.append(fragment)
+        const placeholder = document.createElement('option');
+        placeholder.value = "";
+        placeholder.textContent = "Todos";
+        fragment.append(placeholder);
+        Object.entries(dict).forEach(([slug, name]) => {
+            const option = document.createElement('option');
+            option.value = slug;
+            option.textContent = name;
+            fragment.append(option);
+        })
+        this.statusInput.replaceChildren(fragment);
     }
     
-    populateType (list) {
+    populateType (dict) {
         const fragment = document.createDocumentFragment();
         const placeholder = document.createElement('option')
         placeholder.value = ""
         placeholder.textContent = "Todos"
         fragment.append(placeholder)
-        for (const item of list) {
+        Object.entries(dict).forEach(([slug, name]) => {
             const option = document.createElement('option')
-            option.value = item.slug
-            option.textContent = item.name
+            option.value = slug
+            option.textContent = name
             fragment.append(option)
-        }
-        
-        this.typeInput.append(fragment)
+        })
+        this.typeInput.replaceChildren(fragment)
     }
     
     populateCategories (list) {

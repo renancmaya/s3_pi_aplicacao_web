@@ -20,30 +20,29 @@ export default class FormView {
         this.closeBtn.addEventListener('click', (event) => this.close(event))
     }
 
-    populateStatus (list) {
+    populateStatus (dict) {
         const fragment = document.createDocumentFragment();
         const placeholder = document.createElement('option')
         placeholder.value = ""
         placeholder.textContent = "Selecionar..."
         fragment.append(placeholder)
-        for (const item of list) {
+        Object.entries(dict).forEach(([slug, name]) => {
             const option = document.createElement('option')
-            option.value = item.slug
-            option.textContent = item.name
+            option.value = slug
+            option.textContent = name
             fragment.append(option)
-        }
-        
-        this.statusField.append(fragment)
+        })        
+        this.statusField.replaceChildren(fragment)
     }
 
-    populateCategories (categories) {
+    populateCategories (list) {
         this.categoryField.innerHTML = ""
         const fragment = document.createDocumentFragment()
         const placeholder = document.createElement('option')
         placeholder.value = ""
         placeholder.textContent = "Selecionar..."
         fragment.append(placeholder)
-        for (const category of categories) {
+        for (const category of list) {
             const option = document.createElement('option')
             option.value = category.id
             option.textContent = category.name

@@ -1,7 +1,7 @@
 import Item from "../models/Item.js";
 import FinancialCalculator from "../models/FinancialCalculator.js";
-import { typeList } from "../../mockData.js";
-import { statusList } from "../../mockData.js";
+import { typeDict } from "../../mockData.js";
+import { statusDict } from "../../mockData.js";
 
 export default class AppController {
 
@@ -28,18 +28,18 @@ export default class AppController {
         this.filterForm.onFilter = (filters) => this.handleFilters(filters)
         this.table.onSort = (column) => this.handleSort(column)
         // Outros atributos
-        this.statusList = statusList
-        this.typeList = typeList
-        this.categoryList
+        this.categoryList = null
+        this.statusDict = statusDict
+        this.typeDict = typeDict
+        this.categoryDict = null
     }
 
     init () {
         this.categoryList = this.categoryRepository.getAll()
-        //
+        this.categoryDict = this.mapper.createDictionary(this.categoryList)
         
-        this.form.populateStatus(this.statusList)
-        this.filterForm.setupOptions(this.statusList, this.typeList, this.categoryList)
-        this.table.setupDictionaries(this.statusList, this.typeList, this.categoryList)
+        this.form.populateStatus(this.statusDict)
+        this.filterForm.setupOptions(this.statusDict, this.typeDict, this.categoryList)
         
         const {filters, sort} = this.settings.get();
         this.currentFilters = filters;
@@ -50,7 +50,7 @@ export default class AppController {
     }
 
     handleLoadFormAdd (type) {
-        const term = this.table.typesDictionary[type]
+        const term = this.typeDict[type]
         const categories = this.categoryRepository.getByType(type)
         this.form.loadFormAdd(type, term, categories)
     }
@@ -112,6 +112,6 @@ export default class AppController {
         const sortedItems = this.sortService.sort(filteredItems, this.currentSort)
         const total = FinancialCalculator.sumAll(filteredItems)
         this.table.displayTotal(total)
-        this.table.render(sortedItems)
+        this.table.render(sortedItems, this.statusDict, this.typeDict, this.categoryDict)
     }
 }

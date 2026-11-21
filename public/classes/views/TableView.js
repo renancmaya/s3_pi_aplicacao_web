@@ -12,25 +12,25 @@ export default class TableView {
         this.onDelete = null;
         this.onSort = null;
 
-        this.statusDictionary = {}
+        /*this.statusDictionary = {}
         this.typesDictionary = {}
-        this.categoriesDictionary = {}
+        this.categoriesDictionary = {}*/
 
         this.currency = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
     }
     
-    setupDictionaries (statusList, typeList, categoryList) {
+    /*setupDictionaries (statusList, typeList, categoryList) {
         this.statusDictionary = this.createDictionary(statusList)
         this.typesDictionary = this.createDictionary(typeList)
         this.categoriesDictionary = this.createDictionary(categoryList)
     }
     
-        createDictionary(list) {
-            return list.reduce((acc, item) => {
-                acc[item.slug] = item.name;
-                return acc;
-            }, {});
-        }
+    createDictionary(list) {
+        return list.reduce((acc, item) => {
+            acc[item.slug] = item.name;
+            return acc;
+        }, {});
+    }*/
     
     manageHeadClicks (event) {
         if (event.target.dataset.sort) {
@@ -65,56 +65,56 @@ export default class TableView {
         }
     }
 
-    render (items) {
+    render (items, statusDict, typeDict, categoryDict) {
         this.tableBody.innerHTML = ''
-
         for (const item of items) {
             const newRow = document.createElement('tr')
             newRow.classList.add('table__row')
             newRow.id = item.id
             newRow.setAttribute('data-type', item.type)
 
-            /*const idCell = document.createElement('td')
+            /*// ID
+            const idCell = document.createElement('td')
             idCell.classList.add('table__cell')
             idCell.textContent = item.id*/
-            
+
+            // Status
             const statusCell = document.createElement('td')
             statusCell.classList.add('table__cell')
-            statusCell.textContent = this.statusDictionary[item.status] || item.status;
-
+            statusCell.textContent = statusDict[item.status] || item.status;
+            // Descrição
             const descriptionCell = document.createElement('td')
             descriptionCell.classList.add('table__cell')
             descriptionCell.textContent = item.description
-            
+            // Tipo
             const typeCell = document.createElement('td')
             typeCell.classList.add('table__cell')
-            typeCell.textContent = this.typesDictionary[item.type] || item.type;
-            
+            typeCell.textContent = typeDict[item.type] || item.type;
             const categoryCell = document.createElement('td')
             categoryCell.classList.add('table__cell')
-            categoryCell.textContent = this.categoriesDictionary[item.category] || item.category;
-            
+            categoryCell.textContent = categoryDict[item.category] || item.category;
+            // Data de vencimento
             const dueDateCell = document.createElement('td')
             dueDateCell.classList.add('table__cell')
             dueDateCell.textContent = new Date(item.dueDate).toLocaleString('pt-BR', {day: '2-digit', month: 'numeric', year: 'numeric'})
-            
+            // Valor
             const valueCell = document.createElement('td')
             valueCell.classList.add('table__cell')
             valueCell.textContent = this.currency.format(Number(item.value))
-
+            // Ações
             const actionsCell = document.createElement('td')
             actionsCell.classList.add('table__cell', 'table__actions')
-
+            // Botão: Deletar
             const deleteBtn = document.createElement('button')
             deleteBtn.classList.add('table__action', 'table__action--delete')
             deleteBtn.dataset.id = item.id
             deleteBtn.innerHTML= `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z'></path></svg>`
-
+            // Botão: Editar
             const editBtn = document.createElement('button')
             editBtn.classList.add('table__action', 'table__action--edit')
             editBtn.dataset.id = item.id
             editBtn.innerHTML = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M5 18.89H6.41421L15.7279 9.57627L14.3137 8.16206L5 17.4758V18.89ZM21 20.89H3V16.6473L16.435 3.21231C16.8256 2.82179 17.4587 2.82179 17.8492 3.21231L20.6777 6.04074C21.0682 6.43126 21.0682 7.06443 20.6777 7.45495L9.24264 18.89H21V20.89ZM15.7279 6.74785L17.1421 8.16206L18.5563 6.74785L17.1421 5.33363L15.7279 6.74785Z'></path></svg>`
-
+            // Botão: Duplicar
             const duplicateBtn = document.createElement('button')
             duplicateBtn.classList.add('table__action', 'table__action--duplicate')
             duplicateBtn.dataset.id = item.id
