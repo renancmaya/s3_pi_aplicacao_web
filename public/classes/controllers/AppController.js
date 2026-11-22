@@ -89,6 +89,7 @@ export default class AppController {
 
     handleToggleFilters () {
         const newState = this.filterForm.toggle()
+        this.toolbar.toggleShowFilterBtn(newState)
         this.currentFiltersVisibility = newState
         this.settings.save(this.currentFiltersVisibility, this.currentTheme, this.currentFilters, this.currentSort)
     }

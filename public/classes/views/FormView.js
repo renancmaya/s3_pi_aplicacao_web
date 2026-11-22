@@ -16,44 +16,44 @@ export default class FormView {
         this.onSave = null;
         this.onUpdate = null;
 
-        this.form.addEventListener('submit', (event) => this.submit(event))
-        this.closeBtn.addEventListener('click', (event) => this.close(event))
+        this.form.addEventListener('submit', (event) => this.submit(event));
+        this.closeBtn.addEventListener('click', (event) => this.close(event));
     }
 
     populateStatus (dict) {
         const fragment = document.createDocumentFragment();
-        const placeholder = document.createElement('option')
-        placeholder.value = ""
-        placeholder.textContent = "Selecionar..."
-        fragment.append(placeholder)
+        const placeholder = document.createElement('option');
+        placeholder.value = "";
+        placeholder.textContent = "Selecionar...";
+        fragment.append(placeholder);
         Object.entries(dict).forEach(([slug, name]) => {
-            const option = document.createElement('option')
-            option.value = slug
-            option.textContent = name
-            fragment.append(option)
-        })        
-        this.statusField.replaceChildren(fragment)
+            const option = document.createElement('option');
+            option.value = slug;
+            option.textContent = name;
+            fragment.append(option);
+        })
+        this.statusField.replaceChildren(fragment);
     }
 
     populateCategories (list) {
-        this.categoryField.innerHTML = ""
-        const fragment = document.createDocumentFragment()
-        const placeholder = document.createElement('option')
-        placeholder.value = ""
-        placeholder.textContent = "Selecionar..."
-        fragment.append(placeholder)
+        this.categoryField.innerHTML = "";
+        const fragment = document.createDocumentFragment();
+        const placeholder = document.createElement('option');
+        placeholder.value = "";
+        placeholder.textContent = "Selecionar...";
+        fragment.append(placeholder);
         for (const category of list) {
-            const option = document.createElement('option')
-            option.value = category.id
-            option.textContent = category.name
-            fragment.append(option)
+            const option = document.createElement('option');
+            option.value = category.id;
+            option.textContent = category.name;
+            fragment.append(option);
         }
         
-        this.categoryField.append(fragment)
+        this.categoryField.append(fragment);
     }
 
     submit (event) {
-        event.preventDefault()
+        event.preventDefault();
 
         const itemData = {
             id: parseFloat(this.idField.value),
@@ -66,21 +66,21 @@ export default class FormView {
         }
 
         if (this.onSave) {
-            this.onSave(itemData)
+            this.onSave(itemData);
         }
     }
 
     loadFormAdd (type, term, categories) {
-        this.populateCategories(categories)
-        this.formModal.showModal()
-        this.typeField.value = type
-        this.formHeading.textContent = `Adicionar ${term}`
-        this.submitBtn.innerHTML = 'Salvar'
+        this.populateCategories(categories);
+        this.formModal.showModal();
+        this.typeField.value = type;
+        this.formHeading.textContent = `Adicionar ${term}`;
+        this.submitBtn.innerHTML = 'Salvar';
     }
     
     loadFormUpdate (item, categories) {
-        this.populateCategories(categories)
-        this.formModal.showModal()
+        this.populateCategories(categories);
+        this.formModal.showModal();
         this.idField.value = item.id;
         this.statusField.value = item.status;
         this.descriptionField.value = item.description;
@@ -88,17 +88,17 @@ export default class FormView {
         this.categoryField.value = item.category;
         this.dueDateField.value = item.dueDate;
         this.valueField.value = item.value;
-        this.formHeading.textContent = `Atualizar registro`
-        this.submitBtn.innerHTML = 'Salvar'
+        this.formHeading.textContent = `Atualizar registro`;
+        this.submitBtn.innerHTML = 'Salvar';
     }
 
     clear () {
-        this.form.reset() 
-        this.idField.removeAttribute("value")
+        this.form.reset();
+        this.idField.removeAttribute("value");
     }
     
     close () {
-        this.clear()
-        this.formModal.close()
+        this.clear();
+        this.formModal.close();
     }
 }

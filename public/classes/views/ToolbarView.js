@@ -29,13 +29,17 @@ export default class ToolbarView {
                 filterCounter = document.createElement('span');
                 filterCounter.id = 'filter-counter';
                 this.showFiltersBtn.append(filterCounter);
-                this.showFiltersBtn.dataset.active = 'true'
+                this.showFiltersBtn.dataset.active = 'true';
             }
             
             filterCounter.textContent = `(${number})`;
         } else {
             filterCounter?.remove();
-            this.showFiltersBtn.dataset.active = 'false'
+            this.showFiltersBtn.dataset.active = 'false';
         }
+    }
+
+    toggleShowFilterBtn (state) {
+        this.showFiltersBtn.dataset.show = state
     }
 }
