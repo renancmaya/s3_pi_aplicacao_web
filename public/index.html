@@ -12,123 +12,129 @@
 </head>
 
 <body class="page">
-
+    
     <h1 class="page__title">Controle de Despesas</h1>
-
+    
+    <!-- Barra de ferramentas -->
     <section id="toolbar" class="container toolbar">
         <div class="toolbar__button-wrapper">
             <button id="add-income" class="button button--income" data-type="entrada">Adicionar entrada</button>
             <button id="add-expense" class="button button--expense" data-type="saida">Adicionar saída</button>
         </div>
+        <button id="filter-show" class="filters__button filters__button--toggle">Filtros
+        </button>
     </section>
-
+    
     <!-- Formulário de adição e edição -->
     <dialog id="form-modal" class="section section--add">
         <h2 id="form-heading" class="section__heading">Adicionar Registro</h2>
-
+        
         <form id="form" class="form form--add add">
             <input type="hidden" id="id">
             <input type="hidden" id="type" class="form__input form__input--select" required>
-
+            
             <div class="form__input-group">
                 <label for="status" class="form__label">Status</label>
                 <select id="status" class="form__input form__input--select" required>
                 </select>
             </div>
-
+            
             <div class="form__input-group">
                 <label for="description" class="form__label">Descrição</label>
                 <input type="text" id="description" class="form__input" required>
             </div>
-
+            
             <div class="form__input-group">
                 <label for="category" class="form__label">Categoria</label>
                 <select id="category" class="form__input form__input--select" required>
                     <option value="">Selecione...</option>
                 </select>
             </div>
-
+            
             <div class="form__input-group">
                 <label for="due-date" class="form__label">Data</label>
                 <input type="date" id="due-date" class="form__input" required>
             </div>
-
+            
             <div class="form__input-group">
                 <label for="value" class="form__label">Valor (R$)</label>
                 <input type="number" id="value" class="form__input" step="0.01" required>
             </div>
-
+            
             <div class="form__actions full-width">
                 <button type="submit" id="submit" class="form__button">
                     Adicionar registro
                 </button>
             </div>
-
+            
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="close" class="form__clear">
                 <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path>
             </svg>
         </form>
     </dialog>
-
-    <!-- Barra de filtros -->
-    <section class="container section section--filters">
+    
+    <!-- Formulário de filtros -->
+    <section id="filter-section" data-visible class="container section filters">
         <form id="filter-form" class="form form--filters filters">
-
+            
             <div class="filters__field">
                 <label for="filter-status" class="form__label">Status</label>
                 <select id="filter-status" class="form__input form__input--select">
                 </select>
             </div>
-
+            
             <div class="filters__field">
                 <label for="filter-description" class="form__label">Buscar descrição</label>
                 <input type="text" id="filter-description" class="form__input" placeholder="">
             </div>
-
+            
             <div class="filters__field">
                 <label for="filter-type" class="form__label">Tipo</label>
                 <select id="filter-type" class="form__input form__input--select">
                 </select>
             </div>
-
+            
             <div class="filters__field">
                 <label for="filter-category" class="form__label">Categoria</label>
                 <select id="filter-category" class="form__input form__input--select">
                 </select>
             </div>
-
+            
             <div class="filters__field filters__field--date-range">
                 <label for="filter-due-date-min" class="form__label">Data inicial</label>
                 <input type="date" id="filter-due-date-min" class="form__input" placeholder="">
-
+                
                 <label for="filter-due-date-max" class="form__label">Data final</label>
                 <input type="date" id="filter-due-date-max" class="form__input" placeholder="">
             </div>
-
+            
             <div class="filters__field filters__field--value-range">
                 <label for="filter-value-min" class="form__label">Valor mínimo</label>
                 <input type="text" id="filter-value-min" class="form__input" placeholder="">
-
+                
                 <label for="filter-value-max" class="form__label">Valor Máximo</label>
                 <input type="text" id="filter-value-max" class="form__input" placeholder="">
             </div>
-
+            
             <div class="filters__actions">
-                <input type="submit" id="filter-submit-btn" class="button filters__submit-button" value="Aplicar filtros">
-                <button id="filter-clear-btn" class="filter__clear filters__clear-button">Limpar</button>
+                <input type="submit" id="filter-submit-btn" class="button filters__button--submit" value="Aplicar filtros">
+                <button id="filter-clear-btn" class="filters__button filters__button--clear">Limpar</button>
             </div>
-
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="filter-close" class="form__clear">
+                <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path>
+            </svg>
+            
         </form>
     </section>
-
+    
     <!-- Tabela de registros -->
     <section class="container section section--history">
         <h2 class="section__heading">Histórico</h2>
-
+        
         <table class="table">
             <thead id="table-head" class="table__head">
                 <tr class="table__row">
-
+                    
                     <!-- <th class="table__header">ID</th> -->
 
                     <th class="table__header" aria-sort="none">

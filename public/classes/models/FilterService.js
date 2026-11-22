@@ -39,4 +39,13 @@ export default class FilterService {
         items = items.filter(item => !filterMax || item.value <= filterMax)
         return items
     }
+
+    countActiveFilters (filters) {
+        console.log(filters)
+        return Object.values(filters).filter(value => {
+            if (value === null || value === undefined || value === '' || Number.isNaN(value)) return false;
+            if (Array.isArray(value) && value.length === 0) return false;
+            return true;
+        }).length
+    }
 }

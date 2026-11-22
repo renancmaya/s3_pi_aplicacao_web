@@ -1,5 +1,6 @@
 export default class FilterView {
     constructor () {
+        this.formSection = document.getElementById('filter-section')
         this.form = document.getElementById('filter-form')
         this.statusInput = document.getElementById('filter-status')
         this.descriptionInput = document.getElementById('filter-description')
@@ -14,26 +15,8 @@ export default class FilterView {
         
         this.onFilter = null
         this.form.addEventListener('submit', (event) => this.assembleFilters(event))
-        this.clearFilterBtn.addEventListener('click', (event) => this.clearFilters(event))
+        this.clearFilterBtn.addEventListener('click', (event) => this.clear(event))
     }
-
-    /*populateSelect (element, list) {
-
-        while (element.children.length > 1) {
-            element.lastElementChild.remove();
-        }
-        
-        const fragment = document.createDocumentFragment();
-
-        for (const item of list) {
-            const option = document.createElement('option')
-            option.value = item.slug
-            option.textContent = item.name
-            fragment.append(option)
-        }
-
-        element.append(fragment)
-    }*/
 
     populateStatus (dict) {
         const fragment = document.createDocumentFragment();
@@ -88,7 +71,8 @@ export default class FilterView {
         this.populateCategories(categoryList)
     }
 
-    setState (filters) {
+    setState (filters, visibility) {
+        this.formSection.dataset.visible = visibility
         this.statusInput.value = filters.status
         this.descriptionInput.value = filters.description
         this.typeInput.value = filters.type
@@ -124,7 +108,16 @@ export default class FilterView {
         }
     }
 
-    clearFilters () {
+    toggle () {
+        if (this.formSection.dataset.visible === 'false') {
+            this.formSection.dataset.visible = 'true'
+        } else {
+            this.formSection.dataset.visible = 'false'
+        }
+        return this.formSection.dataset.visible
+    }
+
+    clear () {
         this.clearFilterBtn.classList.remove('show')
         this.form.reset()
     }

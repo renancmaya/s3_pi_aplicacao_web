@@ -25,6 +25,7 @@ export default class AppController {
         this.form.onUpdate = (id) => this.handleUpdate(id)
         this.table.onDelete = (id) => this.handleDelete(id)
         this.table.onDuplicate = (id) => this.handleDuplicate(id)
+        this.toolbar.onToggleFilters = () => this.handleToggleFilters()
         this.filterForm.onFilter = (filters) => this.handleFilters(filters)
         this.table.onSort = (column) => this.handleSort(column)
         // Outros atributos
@@ -41,10 +42,14 @@ export default class AppController {
         this.form.populateStatus(this.statusDict)
         this.filterForm.setupOptions(this.statusDict, this.typeDict, this.categoryList)
         
-        const {filters, sort} = this.settings.get();
+        const {filtersVisibility, theme, filters, sort} = this.settings.get();
+        this.currentFiltersVisibility = filtersVisibility;
+        this.currentTheme = theme;
         this.currentFilters = filters;
+        this.currentFiltersCount = this.filterService.countActiveFilters(filters)
         this.currentSort = sort;
-        this.filterForm.setState(this.currentFilters)
+        this.filterForm.setState(this.currentFilters, this.currentFiltersVisibility)
+        this.toolbar.showFiltersCount(this.currentFiltersCount)
         this.table.setSortBtn(this.currentSort)
         this.refreshTable()        
     }
@@ -82,10 +87,20 @@ export default class AppController {
         this.refreshTable()
     }
 
+    handleToggleFilters () {
+        const newState = this.filterForm.toggle()
+        this.currentFiltersVisibility = newState
+        this.settings.save(this.currentFiltersVisibility, this.currentTheme, this.currentFilters, this.currentSort)
+    }
+
     handleFilters (filters) {
         this.currentFilters = filters
-        this.settings.save(this.currentFilters, this.currentSort)
+        this.settings.save(this.currentFiltersVisibility, this.currentTheme, this.currentFilters, this.currentSort)
         this.refreshTable()
+        
+        // fazer a contagem de filtros ativos
+        this.currentFiltersfiltersCount = this.filterService.countActiveFilters(filters)
+        this.toolbar.showFiltersCount(this.currentFiltersfiltersCount)
     }
     
     handleSort (column) {
@@ -99,7 +114,7 @@ export default class AppController {
             this.currentSort.order = 'asc'
         }
         
-        this.settings.save(this.currentFilters, this.currentSort)
+        this.settings.save(this.currentFiltersVisibility, this.currentTheme, this.currentFilters, this.currentSort)
         this.table.setSortBtn(this.currentSort)
         this.refreshTable()
     }

@@ -106,16 +106,22 @@ select:disabled {
     letter-spacing: -0.02em;
 }
 
+
+/* Barra de ferramentas */
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.toolbar__button-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
 /* Formulários */
-
-#form-modal {
-    /*display: none;*/
-}
-
-#form-modal.show {
-    /*display: block;
-    z-index: 10;*/
-}
 
 #form-modal::backdrop {
     background-color: hsl(0 0 0 / .4);
@@ -277,6 +283,14 @@ select:disabled {
 
 /* Filtros */
 
+.filters[data-visible="false"] {
+    display: none;
+}
+
+.filters[data-visible="true"] {
+    display: block;
+}
+
 .form--filters {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -330,20 +344,23 @@ select:disabled {
     border-top: 1px solid var(--color-border);
 }
 
-.filters__submit-button {
+.filters__button--submit {
     min-width: 150px;
 }
 
-.filters__clear-button {
+.filters__button--clear {
     display: none;
 }
 
-.filters__clear-button.show {
+.filters__button--clear.show {
     display: block;
 }
 
-.filters__clear-button,
-.filter__clear {
+.filters__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
     min-height: 43px;
     padding: 0 20px;
 
@@ -363,11 +380,33 @@ select:disabled {
         border-color var(--transition);
 }
 
-.filters__clear-button:hover,
-.filter__clear:hover {
+.filters__button:hover {
     color: var(--color-text);
     background: var(--color-surface-hover);
     border-color: var(--color-border-hover);
+}
+
+.filters__button--toggle {
+
+}
+
+.filters__button--toggle span {
+    pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.filters__button--toggle[data-active="true"]::before {
+    content: "";
+    pointer-events: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primary-light);
+    background-color: var(--color-primary);
+    width: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
 }
 
 /* Tabela */
@@ -694,8 +733,8 @@ select:disabled {
         padding-top: 20px;
     }
 
-    .filters__submit-button,
-    .filters__clear-button {
+    .filters__button--submit,
+    .filters__button--clear {
         width: 100%;
     }
 
