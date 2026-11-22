@@ -100,6 +100,10 @@ export default class FilterView {
         }
         
         if (this.onFilter) {
+            // DEBUG
+            console.log("filters da View")
+            console.log(filters)
+            //-------
             this.onFilter(filters);
         }
 

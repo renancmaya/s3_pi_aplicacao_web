@@ -1,6 +1,6 @@
 import ItemRepository from './classes/models/ItemRepository.js'
 import CategoryRepository from './classes/models/CategoryRepository.js'
-import Mapper from './classes/models/mapper.js'
+import Mapper from './classes/models/Mapper.js'
 import SettingsService from './classes/models/SettingsService.js'
 import ToolbarView from './classes/views/ToolbarView.js'
 import FormView from './classes/views/FormView.js'

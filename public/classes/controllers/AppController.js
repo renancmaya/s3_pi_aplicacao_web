@@ -99,8 +99,6 @@ export default class AppController {
         this.currentFilters = filters
         this.settings.save(this.currentFiltersVisibility, this.currentTheme, this.currentFilters, this.currentSort)
         this.refreshTable()
-        
-        // fazer a contagem de filtros ativos
         this.currentFiltersfiltersCount = this.filterService.countActiveFilters(filters)
         this.toolbar.showFiltersCount(this.currentFiltersfiltersCount)
     }
@@ -124,8 +122,8 @@ export default class AppController {
     refreshTable() {
         const items = this.itemRepository.getAll();
         const categories = this.categoryRepository.getAll();
-        const mappedItems = this.mapper.mapCategories(items, categories)
-        const filteredItems = this.filterService.filterItems(mappedItems, this.currentFilters)
+        const filteredItems = this.filterService.filterItems(items, this.currentFilters)
+        const mappedItems = this.mapper.mapCategories(filteredItems, categories)
         const sortedItems = this.sortService.sort(filteredItems, this.currentSort)
         const total = FinancialCalculator.sumAll(filteredItems)
         this.table.displayTotal(total)
