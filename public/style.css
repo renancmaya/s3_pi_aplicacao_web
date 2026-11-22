@@ -17,7 +17,9 @@
     --color-border-hover: #cbd5e1;
 
     --color-success: #16a34a;
+    --color-success-hover: #0b8639;
     --color-danger: #dc2626;
+    --color-danger-hover: #b41515;
     --color-warning: #d97706;
 
     --container-width: 1200px;
@@ -242,6 +244,22 @@ select:disabled {
         background var(--transition),
         box-shadow var(--transition),
         transform var(--transition);
+}
+
+.button--income {
+    background-color: var(--color-success);
+}
+
+.button.button--income:hover {
+    background-color: var(--color-success-hover);
+}
+
+.button--expense {
+    background-color: var(--color-danger);
+}
+
+.button.button--expense:hover {
+    background-color: var(--color-danger-hover);
 }
 
 .form__button:hover,

@@ -50,6 +50,7 @@ export default class AppController {
         this.currentSort = sort;
         this.filterForm.setState(this.currentFilters, this.currentFiltersVisibility)
         this.toolbar.showFiltersCount(this.currentFiltersCount)
+        this.toolbar.toggleShowFilterBtn(this.currentFiltersVisibility)
         this.table.setSortBtn(this.currentSort)
         this.refreshTable()        
     }
